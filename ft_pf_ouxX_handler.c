@@ -6,11 +6,11 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:57:13 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/26 12:51:12 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/03/28 18:55:02 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf2/ft_printf.h"
+#include "ft_printf.h"
 static void ft_pf_uoxX_toupper(t_strdata *strdata)
 {
 	char	*ptr;
@@ -24,7 +24,7 @@ static void ft_pf_uoxX_toupper(t_strdata *strdata)
 		i++;
 	}
 }
-static void ft_pf_uoxX_padding(t_strdata *strdata, t_vardata vardata)
+void ft_pf_uoxX_padding(t_strdata *strdata, t_vardata vardata)
 {
 	t_status	ret;
 	strdata->padlen = vardata.padlen;

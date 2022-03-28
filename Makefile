@@ -1,6 +1,5 @@
 SOURCE_FILES = ft_printf.c \
 ft_printf_read_specifiers.c \
-ft_printf_percent.c \
 ft_pf_stages.c \
 ft_pf_handle_char.c \
 ft_pf_conv_handler.c \
@@ -24,7 +23,9 @@ ft_toupper.c \
 ft_strnequ.c \
 ft_strncmp.c \
 ft_pf_read_length.c \
-ft_pf_check_zeropadding.c
+ft_pf_check_zeropadding.c \
+ft_pf_conv_di.c \
+ft_pf_handle_di.c
 SOURCE_DIR = ./
 SOURCES := $(addprefix $(SOURCE_DIR),$(SOURCE_FILES))
 OBJECTS := $(SOURCES:.c=.o)

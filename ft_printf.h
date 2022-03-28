@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 01:09:17 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/03/28 18:54:48 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef enum e_ft_stage
 	FT_CONV_STR,
 	FT_CONV_PTR,
 	FT_CONV_OUXX,
+	FT_CONV_DI,
 	FT_PAD,
 	FT_WRITE,
 	FT_END,
@@ -102,7 +103,6 @@ typedef enum e_status
 	__UNUSED
 }	t_conversion; */
 int	ft_printf(const char *input_format, ...);
-t_status ft_printf_percent(t_strdata *data);
 void ft_pf_stage_to_write(t_ft_controller *ft_controller);
 void ft_pf_stage_to_end(t_ft_controller *ft_controller);
 void ft_pf_stage_to_read_spec(t_ft_controller *ft_controller);
@@ -138,4 +138,7 @@ void	ft_pf_read_length(t_strdata *strdata);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
 void ft_pf_check_zeropadding(t_vardata *vardata, t_strdata *strdata);
 void	ft_pf_get_sint_len(t_vardata *vardata, long long nb, t_strdata *strdata);
+void	ft_pf_handle_di(t_ft_controller *ft_controller, t_strdata *strdata);
+void	ft_conv_di(long long nb, int base, size_t intlen, char *str);
+void	ft_pf_uoxX_padding(t_strdata *strdata, t_vardata vardata);
 #endif

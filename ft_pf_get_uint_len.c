@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_get_int_len.c                                :+:      :+:    :+:   */
+/*   ft_pf_get_uint_len.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 00:56:41 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/03/28 16:57:45 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../ft_printf2/ft_printf.h"
+#include "ft_printf.h"
 
 int		ft_pf_get_conv_base(t_strdata *strdata)
 {
