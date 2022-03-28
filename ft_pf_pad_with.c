@@ -1,19 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_percent.c                                :+:      :+:    :+:   */
+/*   ft_pf_pad_with.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 19:45:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/21 13:36:55 by lasalmi          ###   ########.fr       */
+/*   Created: 2022/03/21 12:48:44 by lasalmi           #+#    #+#             */
+/*   Updated: 2022/03/23 16:10:07 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+/* Needs to be checked for handling signs for 0 padding */
+t_status	ft_pf_pad_with(t_strdata *strdata, char c)
+{
+	int	padsize;
 
-//t_status ft_printf_percent(t_strdata *data)
-//{
-//	ft_printf_read_specifiers(data);
-//	return (OKAY);
-//}
+	padsize = strdata->width - strdata->strlen;
+	strdata->padlen = padsize;
+	strdata->padding = (char *)malloc(padsize + 1);
+	if (!strdata->padding)
+		return (MALLOCFAIL);
+	while (--padsize >= 0)
+		strdata->padding[padsize] = c;
+	return (OKAY);
+}

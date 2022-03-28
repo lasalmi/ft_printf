@@ -1,19 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_percent.c                                :+:      :+:    :+:   */
+/*   ft_conv_ouxX.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 19:45:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/21 13:36:55 by lasalmi          ###   ########.fr       */
+/*   Created: 2022/03/22 23:55:27 by lasalmi           #+#    #+#             */
+/*   Updated: 2022/03/23 11:54:02 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include <string.h>
 
-//t_status ft_printf_percent(t_strdata *data)
-//{
-//	ft_printf_read_specifiers(data);
-//	return (OKAY);
-//}
+void ft_conv_ouxX(unsigned long long nb, int base, size_t intlen, char *str)
+{
+	static const char	table[] = "0123456789abcdef";
+
+	str[intlen--] = '\0';
+	if (nb == 0)
+		str[intlen] = '0';
+	while (nb > 0)
+	{
+		str[intlen] = table[nb%base];
+		nb /= base;
+		intlen--;
+	}
+}

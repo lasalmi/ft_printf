@@ -1,19 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_percent.c                                :+:      :+:    :+:   */
+/*   ft_strdup.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 19:45:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/21 13:36:55 by lasalmi          ###   ########.fr       */
+/*   Created: 2021/11/05 13:02:02 by lasalmi           #+#    #+#             */
+/*   Updated: 2022/03/22 19:57:14 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//t_status ft_printf_percent(t_strdata *data)
-//{
-//	ft_printf_read_specifiers(data);
-//	return (OKAY);
-//}
+char	*ft_strdup(const char *s1)
+{
+	size_t	length;
+	int		i;
+	char	*duplicate;
+
+	i = 0;
+	length = 0;
+	while (s1[i++] != '\0')
+		length++;
+	duplicate = (char *)malloc(length + 1);
+	if (!duplicate)
+		return (NULL);
+	i = 0;
+	while (s1[i] != '\0')
+	{
+		duplicate[i] = s1[i];
+		i++;
+	}
+	duplicate[i] = '\0';
+	return (duplicate);
+}

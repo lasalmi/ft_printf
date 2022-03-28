@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_printf_percent.c                                :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/03/19 19:45:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/21 13:36:55 by lasalmi          ###   ########.fr       */
+/*   Created: 2021/11/03 14:43:14 by lasalmi           #+#    #+#             */
+/*   Updated: 2022/03/22 19:57:23 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-//t_status ft_printf_percent(t_strdata *data)
-//{
-//	ft_printf_read_specifiers(data);
-//	return (OKAY);
-//}
+size_t	ft_strlen(const char *s)
+{
+	size_t	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
+}

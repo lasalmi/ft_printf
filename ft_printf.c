@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/20 00:15:52 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/03/24 12:36:32 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,14 @@ t_status	ft_read_format(t_ft_controller *ft_controller, t_strdata *strdata)
 		ret = ft_check_character(strdata->working_format[*i]);
 		if (ret == NULLBYTE || ret == PERCENT)
 		{
-			ft_pf_stage_to(ft_controller, FT_WRITE);
+			ft_pf_set_stage_to(ft_controller, FT_WRITE);
 			return (ret);
 		}
 	}
-	ft_pf_stage_to(ft_controller, FT_END);
+	if (ret == NULLBYTE)
+		ft_pf_set_stage_to(ft_controller, FT_END);
+	else
+		ft_pf_set_stage_to(ft_controller, FT_READ_SPEC);
 	return (ret);
 }
 
@@ -56,14 +59,11 @@ t_status ft_write_iterated(t_ft_controller *ft_controller, t_strdata *strdata)
 	ft_pf_increase_written(ft_controller);
 	ret = ft_check_character(strdata->working_format[0]);
 	if (ret == OKAY)
-	{
-		ft_putstr("ERROR!");
 		exit(1);
-	}
 	if (ret == NULLBYTE)
-		ft_pf_stage_to(ft_controller, FT_END);
+		ft_pf_set_stage_to(ft_controller, FT_END);
 	else
-		ft_pf_stage_to(ft_controller, FT_READ_SPEC);
+		ft_pf_set_stage_to(ft_controller, FT_READ_SPEC);
 	return (ret);
 }
 
@@ -78,13 +78,14 @@ t_status ft_check_character(const char c)
 
 static void ft_init_flags(t_flags *flags_to_init)
 {
-	flags_to_init->padleft = 0;
+	flags_to_init->space = 0;
 	flags_to_init->padleft = 0;
 	flags_to_init->sign = 0;
 	flags_to_init->pad_with_zeroes = 0;
+	flags_to_init->alt_form = 0;
 }
 
-static void	ft_init_strdata(t_strdata *data_to_init, const char *input_format)
+void	ft_init_strdata(t_strdata *data_to_init)
 {
 	ft_init_flags(&data_to_init->flags);
 	data_to_init->width = 0;
@@ -92,7 +93,6 @@ static void	ft_init_strdata(t_strdata *data_to_init, const char *input_format)
 	data_to_init->conversion = 0;
 	data_to_init->variable_str = NULL;
 	data_to_init->padding = NULL;
-	data_to_init->working_format = input_format;
 }
 
 static void ft_init_ft_controller(t_ft_controller *ft_controller)
@@ -112,14 +112,19 @@ int	ft_printf(const char *input_format, ...)
 	ret = OKAY;
 
 	va_start(strdata.list, input_format);
+	strdata.working_format = input_format;
 	ft_init_ft_controller(&ft_controller);
-	ft_init_strdata(&strdata, input_format);
-	while (ft_controller.stage != FT_END)
+	ft_init_strdata(&strdata);
+	while (ft_controller.stage != FT_END && ft_controller.stage != -1)
 	{
 		if (ft_controller.stage == FT_READ_PRINT)
-			ret = ft_read_format(&ft_controller, &strdata);
+			ft_read_format(&ft_controller, &strdata);
 		if (ft_controller.stage == FT_WRITE)
-			ret = ft_write_iterated(&ft_controller, &strdata);
+			ft_write_iterated(&ft_controller, &strdata);
+		if (ft_controller.stage == FT_CONVERT)
+			ft_conv_handler(&ft_controller, &strdata);
+		if (ft_controller.stage == FT_READ_SPEC)
+			ft_pf_read_specifiers(&ft_controller, &strdata);
 	}
 	return (ft_controller.chars_written);
 }
