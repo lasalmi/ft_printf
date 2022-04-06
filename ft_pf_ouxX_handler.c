@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:57:13 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 18:55:02 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/06 15:27:02 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_pf_ouxX_handler(t_ft_controller *ft_controller, t_strdata *strdata)
 		exit(1);
 	ptr = strdata->variable_str;
 	if (strdata->flags.alt_form)
-		ft_pf_add_0x(&ptr);
+		ft_pf_add_0x(&ptr, var, strdata);
 	if (vardata.zero_prec > 0)
 		ft_add_zeropad(&ptr, vardata.zero_prec);
 	if (strdata->flags.pad_with_zeroes == 1)

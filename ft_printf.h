@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 18:54:48 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/06 15:30:20 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,7 +132,7 @@ void 	ft_conv_ouxX(unsigned long long nb, int base, size_t intlen, char *str);
 void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_strdata *strdata);
 int		ft_pf_get_conv_base(t_strdata *strdata);
 void	ft_add_zeropad(char **str, size_t padlen);
-void	ft_pf_add_0x(char **str);
+void	ft_pf_add_0x(char **str, long long var, t_strdata *strdata);
 int		ft_strnequ(const char *s1, const char *s2, size_t n);
 void	ft_pf_read_length(t_strdata *strdata);
 int		ft_strncmp(const char *s1, const char *s2, size_t n);
