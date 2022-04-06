@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 06:13:44 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/06 07:00:02 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/06 15:08:45 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static	void ft_pf_convert_d_decimal(t_vardata *vardata, long double nb, char *st
 		str[--strdata->precision] = result % 10;
 		result / 10;
 	}
-	str[--strdata->precision] = '.'];
+	str[--strdata->precision] = '.';
 }
 /* Tähän nollacase handlaus */
 static	void ft_pf_convert_f_int(t_vardata *vardata, long double nb, char *str)
