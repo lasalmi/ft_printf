@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:26:51 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/23 14:18:16 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:43:33 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,13 @@ void	ft_readprecision(t_strdata *strdata)
 	if (strdata->working_format[0] == '.')
 	{
 		strdata->working_format += 1;
+/*		if (!ft_isdigit(strdata->working_format[0]) || strdata->working_format[0] == '0')
+		{
+			strdata->explicit_zeroprec = 1;
+			if (ft_isdigit(strdata->working_format[0]))
+				strdata->working_format += 1;
+			return ;
+		} */
 		while (ft_isdigit(strdata->working_format[0]))
 		{
 			result = result * 10 + (strdata->working_format[0] - '0');

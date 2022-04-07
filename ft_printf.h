@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/06 15:30:20 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:48:01 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 typedef enum e_length
 {
+	PF_INIT,
 	PF_HH,
 	PF_H,
 	PF_L,
@@ -66,7 +67,7 @@ typedef struct s_strdata
 	int		width;
 	int		precision;
 	uint8_t	length;
-	uint8_t	conversion;
+	uint8_t	explicit_zeroprec;
 	char	*variable_str;
 	int		strlen;
 	char	*padding;

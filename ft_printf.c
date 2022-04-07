@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/24 12:36:32 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:48:08 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ static void ft_init_flags(t_flags *flags_to_init)
 	flags_to_init->sign = 0;
 	flags_to_init->pad_with_zeroes = 0;
 	flags_to_init->alt_form = 0;
+	flags_to_init->length = PF_INIT;
 }
 
 void	ft_init_strdata(t_strdata *data_to_init)
@@ -90,7 +91,7 @@ void	ft_init_strdata(t_strdata *data_to_init)
 	ft_init_flags(&data_to_init->flags);
 	data_to_init->width = 0;
 	data_to_init->precision = 0;
-	data_to_init->conversion = 0;
+	data_to_init->explicit_zeroprec = 0;
 	data_to_init->variable_str = NULL;
 	data_to_init->padding = NULL;
 }
