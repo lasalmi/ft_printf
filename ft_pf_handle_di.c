@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:03:15 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 19:20:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:26:39 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ static unsigned long long ft_pf_fetch_di_var(t_strdata *strdata)
 	t_length len;
 
 	len = strdata->flags.length;
-	if (len == PF_HH || len == PF_H)
-		return ((long long)va_arg(strdata->list, int));
+	if (len == PF_H)
+		return (short)va_arg(strdata->list, int);
+	if (len == PF_HH)
+		return ((signed char)va_arg(strdata->list, int));
 	if (len == PF_LL)
 		return (va_arg(strdata->list, long long));
 	if (len == PF_L)
 		return ((long long)va_arg(strdata->list, long));
-	return ((long long)va_arg(strdata->list, int));
+	return (long long)va_arg(strdata->list, int);
 }
 static void ft_pf_check_di_flags(t_strdata *strdata)
 {

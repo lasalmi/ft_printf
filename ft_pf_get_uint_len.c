@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/06 15:33:20 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/07 12:29:51 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,11 @@ void	ft_pf_add_0x(char **str, long long var, t_strdata *strdata)
 		str[0][1] = 'x';
 		*str += 2;
 	}
+	if (strdata->working_format[-1] == 'o' && var != 0)
+	{
+		str[0][0] = '0';
+		*str += 1;
+	}
 }
 /*!REVISIT STRLEN/INTLEN!5Conv_len total space required for uint conversion result str without \0 
 intlen for starting index for conversion, padlen to know how many pads
@@ -76,7 +81,12 @@ void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_
 //		vardata->conv_len += vardata->zero_prec; 
 //	}
 	if (strdata->flags.alt_form == 1 && backup != 0)
-		vardata->conv_len += 2;
+	{
+		if (strdata->working_format[-1] == 'o')
+			vardata->conv_len += 1;
+		else
+			vardata->conv_len += 2;	
+	}
 	if (vardata->conv_len < strdata->width)
 	{
 		vardata->padlen = (strdata->width - vardata->conv_len);
