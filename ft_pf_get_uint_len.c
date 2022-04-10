@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/10 12:18:34 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:21:07 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,17 @@ void	ft_pf_add_0x(char **str, long long var, t_strdata *strdata)
 		str[0][0] = '0';
 		str[0][1] = 'x';
 		*str += 2;
+		return ;
 	}
-	if (strdata->working_format[-1] == 'o' && var != 0)
+	if (strdata->working_format[-1] == 'o')
 	{
-		str[0][0] = '0';
-		*str += 1;
+		if (var != 0 || strdata->explicit_zeroprec)
+		{
+			str[0][0] = '0';
+			*str += 1;
+			if (var == 0)
+				strdata->strlen += 1;
+		}
 	}
 }
 /*!REVISIT STRLEN/INTLEN!5Conv_len total space required for uint conversion result str without \0 
@@ -65,9 +71,9 @@ void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_
 	vardata->zero_prec = 0;
 	vardata->conv_len = 0;
 	vardata->padlen = 0;
-	if (nb == 0)
+	if (nb == 0 && !strdata->explicit_zeroprec)
 		vardata->conv_len = 1;
-	while (nb > 0)
+	while (nb > 0 && !strdata->explicit_zeroprec)
 	{
 		nb /= base;
 		vardata->conv_len++;
@@ -87,7 +93,7 @@ void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_
 		else
 			vardata->conv_len += 2;	
 	}
-	if (vardata->conv_len < strdata->width && strdata->precision < vardata->intlen)
+	if (vardata->conv_len < strdata->width && strdata->precision <= vardata->intlen)
 	{
 		vardata->padlen = (strdata->width - vardata->conv_len);
 //		vardata->conv_len += vardata->padlen;

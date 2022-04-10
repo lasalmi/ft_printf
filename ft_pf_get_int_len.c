@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:05:29 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/06 15:17:24 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/10 16:32:41 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_check_sign(t_vardata *vardata, long long nb, t_strdata *strdata)
 {
 	if (strdata->flags.sign || strdata->flags.space)
 	{
-		if (nb > 0)
+		if (nb >= 0)
 			vardata->conv_len += 1;
 	}
 	if (nb < 0)
