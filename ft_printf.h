@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/07 12:48:01 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:40:34 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,4 +142,5 @@ void	ft_pf_get_sint_len(t_vardata *vardata, long long nb, t_strdata *strdata);
 void	ft_pf_handle_di(t_ft_controller *ft_controller, t_strdata *strdata);
 void	ft_conv_di(long long nb, int base, size_t intlen, char *str);
 void	ft_pf_uoxX_padding(t_strdata *strdata, t_vardata vardata);
+void	ft_pf_skip_leading_zeroes(char **str);
 #endif

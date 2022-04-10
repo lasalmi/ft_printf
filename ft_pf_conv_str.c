@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:05:32 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/24 12:42:36 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:27:45 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_status ft_pf_conv_str(t_ft_controller *ft_controller, t_strdata *strdata, char
 	if (!str)
 		str = NULL_STR;
 	strlen = ft_strlen(str);
-	if (!strdata->precision || strlen < strdata->precision)
+	if ((!strdata->precision && !strdata->explicit_zeroprec) || strlen < strdata->precision)
 	{
 		strlen = ft_strlen(str);
 		strdata->strlen = strlen;

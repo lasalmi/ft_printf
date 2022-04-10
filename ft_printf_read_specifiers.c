@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:26:51 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/07 12:43:33 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:45:20 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,14 @@ void	ft_readprecision(t_strdata *strdata)
 	if (strdata->working_format[0] == '.')
 	{
 		strdata->working_format += 1;
-/*		if (!ft_isdigit(strdata->working_format[0]) || strdata->working_format[0] == '0')
+		ft_pf_skip_leading_zeroes(&strdata->working_format);
+		if (!ft_isdigit(strdata->working_format[0]) || strdata->working_format[0] == '0')
 		{
 			strdata->explicit_zeroprec = 1;
 			if (ft_isdigit(strdata->working_format[0]))
 				strdata->working_format += 1;
 			return ;
-		} */
+		}
 		while (ft_isdigit(strdata->working_format[0]))
 		{
 			result = result * 10 + (strdata->working_format[0] - '0');
@@ -80,6 +81,11 @@ to other functions to read the specifiers and move the pointer further*/
 void	ft_pf_read_specifiers(t_ft_controller *ft_controller, t_strdata *strdata)
 {
 	strdata->working_format += 1;
+	if (*strdata->working_format == '\0')
+	{
+		ft_controller->stage = FT_END;
+		return ;
+	}
 	ft_readflags(strdata);
 	ft_readwidth(strdata);
 	ft_readprecision(strdata);

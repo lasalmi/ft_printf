@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/07 12:29:51 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/10 12:18:34 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_
 		else
 			vardata->conv_len += 2;	
 	}
-	if (vardata->conv_len < strdata->width)
+	if (vardata->conv_len < strdata->width && strdata->precision < vardata->intlen)
 	{
 		vardata->padlen = (strdata->width - vardata->conv_len);
 //		vardata->conv_len += vardata->padlen;
