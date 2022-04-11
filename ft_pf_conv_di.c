@@ -6,25 +6,30 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:39:53 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 19:22:00 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/10 20:32:25 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void ft_conv_di(long long nb, int base, size_t intlen, char *str)
+void ft_conv_di(long long nb, int zeroprec, size_t intlen, char *str)
 {
 	static const char	table[] = "0123456789abcdef";
 
 	if (nb < 0)
 		nb *= -1;
 	str[intlen--] = '\0';
-	if (nb == 0)
+	if (nb == -9223372036854775808)
+	{
+		nb = 922337203685477580;
+		str[intlen--] = '8';
+	}
+	if (nb == 0 && !zeroprec)
 		str[intlen] = '0';
 	while (nb > 0)
 	{
-		str[intlen] = table[nb%base];
-		nb /= base;
+		str[intlen] = table[nb%10];
+		nb /= 10;
 		intlen--;
 	}
 }
