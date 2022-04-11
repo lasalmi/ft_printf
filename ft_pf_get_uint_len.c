@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 07:32:16 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 08:25:12 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_
 	vardata->padlen = 0;
 	if (nb == 0 && !strdata->explicit_zeroprec)
 		vardata->conv_len = 1;
-	while (nb > 0 && !strdata->explicit_zeroprec)
+	while (nb > 0) /*&& !strdata->explicit_zeroprec)*/
 	{
 		nb /= base;
 		vardata->conv_len++;

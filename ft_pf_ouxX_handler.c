@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:57:13 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 08:18:52 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 08:26:31 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	ft_pf_ouxX_handler(t_ft_controller *ft_controller, t_strdata *strdata)
 		ft_add_zeropad(&ptr, vardata.zero_prec);
 	if (strdata->flags.pad_with_zeroes == 1)
 		ft_add_zeropad(&ptr, vardata.padlen);
-	if (!strdata->explicit_zeroprec)
+//	if (!strdata->explicit_zeroprec)
 		ft_conv_ouxX(var, ft_pf_get_conv_base(strdata), vardata.intlen, ptr);
 	if (!strdata->flags.pad_with_zeroes && vardata.padlen)
 		ft_pf_uoxX_padding(strdata, vardata);
