@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 06:19:46 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 07:32:16 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,11 @@ void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_
 	if (strdata->flags.alt_form == 1 && backup != 0)
 	{
 		if (strdata->working_format[-1] == 'o')
+		{
 			vardata->conv_len += 1;
+			if (strdata->precision > vardata->intlen)
+				strdata->precision--;
+		}
 		else
 			vardata->conv_len += 2;	
 	}
