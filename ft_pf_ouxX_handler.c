@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:57:13 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/10 15:20:32 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 08:18:52 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,8 +37,10 @@ static unsigned long long ft_pf_fetch_ouxX_var(t_strdata *strdata)
 	t_length len;
 
 	len = strdata->flags.length;
-	if (len == PF_HH || len == PF_H)
-		return ((unsigned long long)va_arg(strdata->list, unsigned int));
+	if (len == PF_HH)
+		return ((unsigned char)va_arg(strdata->list, unsigned int));
+	if (len == PF_H)
+		return ((unsigned short)va_arg(strdata->list, unsigned int));
 	if (len == PF_LL)
 		return (va_arg(strdata->list, unsigned long long));
 	if (len == PF_L)

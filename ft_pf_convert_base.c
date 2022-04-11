@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:42:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 07:36:55 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 07:42:13 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ t_status ft_pf_convert_hexa(t_ft_controller *ft_controller, t_strdata *strdata, 
 
 	i = 50;
 	buffer[--i] = '\0';
-	if (ptr == 0)
+	if (ptr == 0 && !strdata->explicit_zeroprec)
 		buffer[--i] = '0';
 	while (ptr > 0)
 	{
