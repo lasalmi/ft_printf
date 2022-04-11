@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/10 12:40:34 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 09:46:25 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef enum e_length
 	PF_H,
 	PF_L,
 	PF_LL,
+	PF_LONGD
 }	t_length;
 typedef struct s_flags
 {
@@ -46,6 +47,7 @@ typedef enum e_ft_stage
 	FT_CONV_PTR,
 	FT_CONV_OUXX,
 	FT_CONV_DI,
+	FT_CONV_FLOAT,
 	FT_PAD,
 	FT_WRITE,
 	FT_END,
@@ -143,4 +145,7 @@ void	ft_pf_handle_di(t_ft_controller *ft_controller, t_strdata *strdata);
 void	ft_conv_di(long long nb, int base, size_t intlen, char *str);
 void	ft_pf_uoxX_padding(t_strdata *strdata, t_vardata vardata);
 void	ft_pf_skip_leading_zeroes(char **str);
+void	ft_pf_get_double_len(t_vardata *vardata, long double nb, t_strdata *strdata);
+void 	ft_pf_conv_f(t_vardata *vardata, t_strdata *strdata, long double nb, char *str);
+void	ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata);
 #endif

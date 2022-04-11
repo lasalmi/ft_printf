@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:26:56 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 18:51:17 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 09:08:57 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ void	ft_conv_handler(t_ft_controller *ft_controller, t_strdata *strdata)
 		ft_pf_ouxX_handler(ft_controller, strdata);
 	if (ft_controller->stage == FT_CONV_DI)
 		ft_pf_handle_di(ft_controller, strdata);
+	if (ft_controller->stage == FT_CONV_FLOAT)
+		ft_pf_handle_f(ft_controller, strdata);
 	else
 		return ;
 }

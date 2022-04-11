@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:06:43 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/23 14:29:27 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 09:46:13 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,7 @@ void	ft_pf_read_length(t_strdata *strdata)
 		ft_pf_set_length(strdata, PF_H, 1);
 	if (ft_strnequ(strdata->working_format, "l", 1))
 		ft_pf_set_length(strdata, PF_L, 1);
+	if (ft_strnequ(strdata->working_format, "L", 1))
+		ft_pf_set_length(strdata, PF_LONGD, 1);
 	return ;
 }

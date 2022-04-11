@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:19:34 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/28 18:52:42 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 09:08:10 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,8 @@ t_stage ft_read_conversion(t_strdata *strdata)
 	strdata->working_format += 1;
 	if (strdata->working_format[-1] == 'c')
 		return (FT_CONV_CHAR);
+	if (strdata->working_format[-1] == 'f')
+		return (FT_CONV_FLOAT);
 	if (strdata->working_format[-1] == 's')
 		return (FT_CONV_STR);
 	if (strdata->working_format[-1] == 'p')

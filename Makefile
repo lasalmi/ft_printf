@@ -26,7 +26,10 @@ ft_pf_read_length.c \
 ft_pf_check_zeropadding.c \
 ft_pf_conv_di.c \
 ft_pf_handle_di.c \
-ft_pf_skip_leading_zeroes.c
+ft_pf_skip_leading_zeroes.c \
+ft_pf_handle_f.c \
+ft_pf_conv_f.c \
+ft_pf_get_double_len.c
 SOURCE_DIR = ./
 SOURCES := $(addprefix $(SOURCE_DIR),$(SOURCE_FILES))
 OBJECTS := $(SOURCES:.c=.o)

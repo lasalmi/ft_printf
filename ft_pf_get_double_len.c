@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/31 09:42:52 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 09:12:03 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_pf_check_double(t_vardata *vardata, long long nb, t_strdata *strdata)
 {
-	if (strdata->precision = 0 && !strdata->flags.alt_form && nb >= 0)
+	if (strdata->precision == 0 && !strdata->flags.alt_form && nb >= 0)
 		return ;
 	if (strdata->flags.sign || strdata->flags.space)
 		if (nb > 0)
@@ -27,7 +27,7 @@ static void	ft_pf_check_double(t_vardata *vardata, long long nb, t_strdata *strd
 void	ft_pf_get_double_len(t_vardata *vardata, long double nb, t_strdata *strdata)
 {
 	long long	firstpart;
-	size_t		
+	
 	firstpart = (long long)nb;
 	vardata->zero_prec = 0;
 	vardata->conv_len = 0;
