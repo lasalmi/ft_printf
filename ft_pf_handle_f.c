@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:07:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 09:45:41 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/11 12:10:02 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,11 @@ static void ft_pf_f_prefix(char **ptr, t_strdata *strdata, long double nb)
 	t_flags	*flags;
 
 	flags = &strdata->flags;
-	if (flags->sign && nb >= 0)
+	if (flags->sign && nb >= 0.00L)
 		*(*ptr)++ = '+';
-	else if (flags->space && nb >= 0)
+	else if (flags->space && nb >= 0.00L)
 		*(*ptr)++ = ' ';
-	else if (nb < 0)
+	else if (nb < 0.00L)
 		*(*ptr)++ = '-';
 }
 

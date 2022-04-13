@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:03:15 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 05:57:42 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/13 08:09:17 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static unsigned long long ft_pf_fetch_di_var(t_strdata *strdata)
 }
 static void ft_pf_check_di_flags(t_strdata *strdata)
 {
-	if (strdata->precision > 0 || strdata->flags.padleft == 1)
+	if (strdata->precision > 0 || strdata->flags.padleft == 1 || strdata->explicit_zeroprec)
 		strdata->flags.pad_with_zeroes = 0;
 	if (strdata->flags.sign)
 		strdata->flags.space = 0;

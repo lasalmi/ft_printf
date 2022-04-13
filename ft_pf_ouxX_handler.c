@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:57:13 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 08:26:31 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/13 08:30:12 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static unsigned long long ft_pf_fetch_ouxX_var(t_strdata *strdata)
 
 static void ft_pf_check_ouxX_flags(t_strdata *strdata)
 {
-	if (strdata->precision > 0 || strdata->flags.padleft == 1)
+	if (strdata->precision > 0 || strdata->flags.padleft == 1 || strdata->explicit_zeroprec)
 		strdata->flags.pad_with_zeroes = 0;
 }
 
