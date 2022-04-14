@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 06:13:44 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/13 17:29:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/14 12:23:30 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ void ft_pf_conv_f(t_vardata *vardata, t_strdata *strdata, long double nb, char *
 	ft_pf_convert_f_int(vardata, nb, str);
 	nb -= (int)nb;
 	frac = nb * ft_pf_power_of_ten(strdata->precision + 1);
-	if (!is_negative)
+//	if (!is_negative)
 		frac += 5;
 	frac /= 10;
 	ft_pf_convert_d_decimal(vardata, frac, str + vardata->intlen, strdata);
