@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:19:34 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 09:08:10 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/14 12:33:00 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_stage ft_read_conversion(t_strdata *strdata)
 	if (strdata->working_format[-1] == 'p')
 		return (FT_CONV_PTR);
 	if (ft_pf_check_if_ouxx(strdata))
-		return (FT_CONV_OUXX);
+		return (FT_conv_oux);
 	if (strdata->working_format[-1] == 'd' || strdata->working_format[-1] == 'i')
 		return (FT_CONV_DI);
 	return (FT_CONV_CHAR);

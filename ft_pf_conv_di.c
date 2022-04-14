@@ -6,13 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:39:53 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/10 20:32:25 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/14 12:36:20 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
 
-void ft_conv_di(long long nb, int zeroprec, size_t intlen, char *str)
+void	ft_conv_di(long long nb, int zeroprec, size_t intlen, char *str)
 {
 	static const char	table[] = "0123456789abcdef";
 
@@ -28,7 +28,7 @@ void ft_conv_di(long long nb, int zeroprec, size_t intlen, char *str)
 		str[intlen] = '0';
 	while (nb > 0)
 	{
-		str[intlen] = table[nb%10];
+		str[intlen] = table[nb % 10];
 		nb /= 10;
 		intlen--;
 	}

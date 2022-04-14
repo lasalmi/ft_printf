@@ -6,21 +6,21 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:26:51 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/10 19:59:22 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/14 12:47:48 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_pf_validflag(char c)
+int	ft_pf_validflag(char c)
 {
-	return (c == '0' || c == '-' || c == '+' || c == ' ' ||
-	c == '#');
+	return (c == '0' || c == '-' || c == '+' || c == ' ' \
+	|| c == '#');
 }
 
 void	ft_readflags(t_strdata *strdata)
 {
-	t_flags *flags;
+	t_flags	*flags;
 
 	flags = &strdata->flags;
 	while (ft_pf_validflag(strdata->working_format[0]))
@@ -48,7 +48,8 @@ void	ft_readprecision(t_strdata *strdata)
 	{
 		strdata->working_format += 1;
 		ft_pf_skip_leading_zeroes(&strdata->working_format);
-		if (!ft_isdigit(strdata->working_format[0]) || strdata->working_format[0] == '0')
+		if (!ft_isdigit(strdata->working_format[0]) || \
+		strdata->working_format[0] == '0')
 		{
 			strdata->explicit_zeroprec = 1;
 			if (ft_isdigit(strdata->working_format[0]))
@@ -66,7 +67,7 @@ void	ft_readprecision(t_strdata *strdata)
 
 void	ft_readwidth(t_strdata *strdata)
 {
-	int result;
+	int	result;
 
 	result = 0;
 	while (ft_isdigit(strdata->working_format[0]))
@@ -76,9 +77,11 @@ void	ft_readwidth(t_strdata *strdata)
 	}
 	strdata->width = result;
 }
+
 /* Moves the pointer one byte forward to skip the % and sends the working format
 to other functions to read the specifiers and move the pointer further*/
-void	ft_pf_read_specifiers(t_ft_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_read_specifiers(t_ft_controller *ft_controller, \
+t_strdata *strdata)
 {
 	strdata->working_format += 1;
 	if (*strdata->working_format == '\0')

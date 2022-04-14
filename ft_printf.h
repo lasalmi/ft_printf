@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 09:46:25 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/14 12:54:24 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef enum e_ft_stage
 	FT_CONV_CHAR,
 	FT_CONV_STR,
 	FT_CONV_PTR,
-	FT_CONV_OUXX,
+	FT_conv_oux,
 	FT_CONV_DI,
 	FT_CONV_FLOAT,
 	FT_PAD,
@@ -130,8 +130,8 @@ size_t	ft_strlen(const char *s);
 int		ft_toupper(int c);
 size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
 int		ft_isdigit(int c);
-void	ft_pf_ouxX_handler(t_ft_controller *ft_controller, t_strdata *strdata);
-void 	ft_conv_ouxX(unsigned long long nb, int base, size_t intlen, char *str);
+void	ft_pf_oux_handler(t_ft_controller *ft_controller, t_strdata *strdata);
+void 	ft_conv_oux(unsigned long long nb, int base, size_t intlen, char *str);
 void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_strdata *strdata);
 int		ft_pf_get_conv_base(t_strdata *strdata);
 void	ft_add_zeropad(char **str, size_t padlen);
@@ -143,7 +143,7 @@ void ft_pf_check_zeropadding(t_vardata *vardata, t_strdata *strdata);
 void	ft_pf_get_sint_len(t_vardata *vardata, long long nb, t_strdata *strdata);
 void	ft_pf_handle_di(t_ft_controller *ft_controller, t_strdata *strdata);
 void	ft_conv_di(long long nb, int base, size_t intlen, char *str);
-void	ft_pf_uoxX_padding(t_strdata *strdata, t_vardata vardata);
+void	ft_pf_uox_padding(t_strdata *strdata, t_vardata vardata);
 void	ft_pf_skip_leading_zeroes(char **str);
 void	ft_pf_get_double_len(t_vardata *vardata, long double nb, t_strdata *strdata);
 void 	ft_pf_conv_f(t_vardata *vardata, t_strdata *strdata, long double nb, char *str);

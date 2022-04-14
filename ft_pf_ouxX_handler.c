@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_ouxX_handler.c                               :+:      :+:    :+:   */
+/*   ft_pf_oux_handler.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 00:57:13 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/13 08:30:12 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/14 12:53:58 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-static void ft_pf_uoxX_toupper(t_strdata *strdata)
+
+static void	ft_pf_oux_to_upper(t_strdata *strdata)
 {
 	char	*ptr;
 	size_t	i;
@@ -24,17 +25,20 @@ static void ft_pf_uoxX_toupper(t_strdata *strdata)
 		i++;
 	}
 }
-void ft_pf_uoxX_padding(t_strdata *strdata, t_vardata vardata)
+
+void	ft_pf_uox_padding(t_strdata *strdata, t_vardata vardata)
 {
 	t_status	ret;
+
 	strdata->padlen = vardata.padlen;
 	ret = ft_pf_pad_with(strdata, ' ');
 	if (ret != OKAY)
 		exit(1);
 }
-static unsigned long long ft_pf_fetch_ouxX_var(t_strdata *strdata)
+
+static unsigned long long	ft_pf_fetch_oux_var(t_strdata *strdata)
 {
-	t_length len;
+	t_length	len;
 
 	len = strdata->flags.length;
 	if (len == PF_HH)
@@ -48,23 +52,24 @@ static unsigned long long ft_pf_fetch_ouxX_var(t_strdata *strdata)
 	return ((unsigned long long)va_arg(strdata->list, unsigned int));
 }
 
-static void ft_pf_check_ouxX_flags(t_strdata *strdata)
+static void	ft_pf_check_oux_flags(t_strdata *strdata)
 {
-	if (strdata->precision > 0 || strdata->flags.padleft == 1 || strdata->explicit_zeroprec)
-		strdata->flags.pad_with_zeroes = 0;
+	if (strdata->precision > 0 || strdata->flags.padleft == 1 \
+	|| strdata->explicit_zeroprec)
+strdata->flags.pad_with_zeroes = 0;
 }
 
-void	ft_pf_ouxX_handler(t_ft_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_oux_handler(t_ft_controller *ft_controller, t_strdata *strdata)
 {
 	t_vardata			vardata;
-	unsigned long long 	var;
+	unsigned long long	var;
 	char				*ptr;
 
-	var = ft_pf_fetch_ouxX_var(strdata);
-	ft_pf_check_ouxX_flags(strdata);
+	var = ft_pf_fetch_oux_var(strdata);
+	ft_pf_check_oux_flags(strdata);
 	ft_pf_get_uint_data(&vardata, var, ft_pf_get_conv_base(strdata), strdata);
 	strdata->variable_str = (char *)malloc(vardata.conv_len + 1);
-	strdata->strlen = vardata.conv_len; 
+	strdata->strlen = vardata.conv_len;
 	if (!strdata->variable_str)
 		exit(1);
 	ptr = strdata->variable_str;
@@ -74,12 +79,10 @@ void	ft_pf_ouxX_handler(t_ft_controller *ft_controller, t_strdata *strdata)
 		ft_add_zeropad(&ptr, vardata.zero_prec);
 	if (strdata->flags.pad_with_zeroes == 1)
 		ft_add_zeropad(&ptr, vardata.padlen);
-//	if (!strdata->explicit_zeroprec)
-		ft_conv_ouxX(var, ft_pf_get_conv_base(strdata), vardata.intlen, ptr);
+	ft_conv_oux(var, ft_pf_get_conv_base(strdata), vardata.intlen, ptr);
 	if (!strdata->flags.pad_with_zeroes && vardata.padlen)
-		ft_pf_uoxX_padding(strdata, vardata);
-//	strdata->strlen = vardata.conv_len; 
+		ft_pf_uox_padding(strdata, vardata);
 	if (strdata->working_format[-1] == 'X')
-		ft_pf_uoxX_toupper(strdata);
+		ft_pf_oux_to_upper(strdata);
 	ft_pf_print(ft_controller, strdata);
 }

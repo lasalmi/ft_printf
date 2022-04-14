@@ -15,8 +15,8 @@ ft_strdup.c \
 ft_strlen.c \
 ft_isdigit.c \
 ft_strlcpy.c \
-ft_pf_ouxX_handler.c \
-ft_conv_ouxX.c \
+ft_pf_oux_handler.c \
+ft_conv_oux.c \
 ft_pf_get_uint_len.c \
 ft_pf_get_int_len.c \
 ft_toupper.c \
