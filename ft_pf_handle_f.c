@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:07:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 12:10:02 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/13 12:18:21 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,10 @@ void	ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata)
 	strdata->strlen = vardata.conv_len;
 	ptr = strdata->variable_str;
 	ft_pf_f_prefix(&ptr, strdata, var);
+	if (strdata->flags.pad_with_zeroes == 1)
+		ft_add_zeropad(&ptr, vardata.padlen);
 	ft_pf_conv_f(&vardata, strdata, var, ptr);
+	if (!strdata->flags.pad_with_zeroes && vardata.padlen)
+		ft_pf_uoxX_padding(strdata, vardata);
 	ft_pf_print(ft_controller, strdata);
 }

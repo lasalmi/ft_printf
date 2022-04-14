@@ -4,3 +4,7 @@ main.c
 a.out.dSYM/
 libftprintf.a
 output
+printf_test/
+test*
+user*
+.gitignore

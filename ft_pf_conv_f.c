@@ -6,28 +6,63 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 06:13:44 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 12:32:51 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/13 17:29:13 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	void ft_pf_convert_d_decimal(t_vardata *vardata, long double nb, char *str, t_strdata *strdata)
+static void			ft_pf_f_leading_zeroes(unsigned long long nb, t_strdata *strdata, \
+char *str)
 {
-	long double round;
+	size_t	len;
+	int		diff;
+
+	len = 0;
+	while (nb > 0)
+	{
+		len++;
+		nb /= 10;
+	}
+//	diff = strdata->precision + 1 - len;
+	while (strdata->precision + 1 > 0)
+	{
+		str[strdata->precision-- + 1] = '0';
+	}
+}
+static long long	ft_pf_power_of_ten(int power)
+{
 	long long	result;
-	long long	remove;
+
+	result = 1;
+	while (power-- > 0)
+		result *= 10;
+	return (result);
+}
+static unsigned long long ft_pf_round_f(t_strdata *strdata, long double nb)
+{
+	long long			remove;
+	unsigned long long	result;
+	long double			round;
+	uint8_t				is_negative;
+
+	is_negative = 0;
 
 	if (nb < 0)
 		nb *= -1;
-	remove = (long long)nb;
-	round = 5.00 / (10000000.00);
-	nb += round;
+	remove = nb;
 	nb -= remove;
-/* KORJAA PRECISION! */
-	result = (long long)(nb * 1000000);
+	result = (unsigned long long)(nb * ft_pf_power_of_ten(strdata->precision));
+	return (result);
+}
+
+static	void ft_pf_convert_d_decimal(t_vardata *vardata, unsigned long long result, char *str, t_strdata *strdata)
+{
+	unsigned long long	for_zeroes;
+
+	for_zeroes = result;
 	str[strdata->precision-- + 1] = '\0';
-	if (strdata->precision == 0 && strdata->flags.alt_form)
+	if (strdata->explicit_zeroprec && strdata->flags.alt_form)
 	{
 		str[0] = '.';
 		return ;
@@ -37,6 +72,7 @@ static	void ft_pf_convert_d_decimal(t_vardata *vardata, long double nb, char *st
 		str[strdata->precision-- + 1] = (result % 10) + '0';
 		result /= 10;
 	}
+	ft_pf_f_leading_zeroes(for_zeroes, strdata, str);
 	str[strdata->precision + 1] = '.';
 }
 /* Tähän nollacase handlaus */
@@ -49,6 +85,8 @@ static	void ft_pf_convert_f_int(t_vardata *vardata, long double nb, char *str)
 	if (nb < 0)
 		nb *= -1;
 	result = (long long)nb;
+	if (result == 0)
+		str[--i] = '0';
 	while (result > 0)
 	{
 		str[--i] = (result % 10) + '0';
@@ -58,6 +96,19 @@ static	void ft_pf_convert_f_int(t_vardata *vardata, long double nb, char *str)
 
 void ft_pf_conv_f(t_vardata *vardata, t_strdata *strdata, long double nb, char *str)
 {
+	unsigned long long	frac;
+	uint8_t				is_negative;
+	frac = 0;
+	if (nb < 0.0L)
+	{
+		nb *= -1;
+		is_negative = 1;
+	}
 	ft_pf_convert_f_int(vardata, nb, str);
-	ft_pf_convert_d_decimal(vardata, nb, str + vardata->intlen, strdata);
+	nb -= (int)nb;
+	frac = nb * ft_pf_power_of_ten(strdata->precision + 1);
+	if (!is_negative)
+		frac += 5;
+	frac /= 10;
+	ft_pf_convert_d_decimal(vardata, frac, str + vardata->intlen, strdata);
 }

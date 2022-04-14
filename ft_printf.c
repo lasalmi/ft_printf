@@ -6,13 +6,14 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/07 12:48:08 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/13 11:48:51 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 /*Reads through the format string, if no output, sets the stage to end*/
+
 t_status	ft_read_format(t_ft_controller *ft_controller, t_strdata *strdata)
 {
 	int			*i;
@@ -104,6 +105,16 @@ static void ft_init_ft_controller(t_ft_controller *ft_controller)
 	ft_controller->format_i = 0;
 //	ft_controller->last_status = OKAY;
 }
+void		ft_pf_reset_strdata(t_strdata *strdata)
+{
+	strdata->explicit_zeroprec = 0;
+	strdata->length = 0;
+	strdata->padding = NULL;
+	strdata->variable_str = NULL;
+	strdata->width = 0;
+	strdata->strlen = 0;
+	ft_init_flags(&strdata->flags);
+}
 
 int	ft_printf(const char *input_format, ...)
 {
@@ -127,5 +138,6 @@ int	ft_printf(const char *input_format, ...)
 		if (ft_controller.stage == FT_READ_SPEC)
 			ft_pf_read_specifiers(&ft_controller, &strdata);
 	}
+	va_end(strdata.list);
 	return (ft_controller.chars_written);
 }

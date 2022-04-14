@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 13:42:10 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/13 12:14:28 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_pf_check_double(t_vardata *vardata, long double nb, t_strdata *strdata)
 {
-	if (strdata->precision == 0.00L && !strdata->flags.alt_form && nb >= 0.00L)
+	if (strdata->precision == 0 && !strdata->flags.alt_form && nb >= 0.00L)
 		return ;
 	if (strdata->flags.sign || strdata->flags.space)
 		if (nb > 0)
@@ -22,6 +22,8 @@ static void	ft_pf_check_double(t_vardata *vardata, long double nb, t_strdata *st
 	if (nb < 0.00L)
 		vardata->conv_len += 1;
 	if (!strdata->explicit_zeroprec)
+		vardata->conv_len += 1;
+	if (strdata->explicit_zeroprec && strdata->flags.alt_form)
 		vardata->conv_len += 1;
 	vardata->conv_len += strdata->precision;
 }
@@ -36,6 +38,8 @@ void	ft_pf_get_double_len(t_vardata *vardata, long double nb, t_strdata *strdata
 	vardata->padlen = 0;
 	if (firstpart < 0)
 		firstpart *= -1;
+	if (firstpart == 0)
+		vardata->conv_len += 1;
 	while (firstpart > 0)
 	{
 		firstpart /= 10;
