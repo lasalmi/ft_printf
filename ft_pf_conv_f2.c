@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 14:23:48 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/15 14:31:32 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static	size_t ft_get_decimal(long double nb, char *temp, size_t i, t_strdata *st
 	int		decimal;
 	size_t	count;
 
-	count = (strdata->precision + 1);
+	count = strdata->precision + 1;
 	temp[i++] = '.';
 	nb -= (long long)nb; 
 	while (count--)
@@ -73,6 +73,7 @@ long double nb, char *str)
 	i = 0;
 	while (temp[i])
 		*str++ = temp[i++];
+	free(temp);
 }
 
 /*int	main(void)
