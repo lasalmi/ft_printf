@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 11:16:21 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/15 14:11:04 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,4 +153,5 @@ long double nb, t_strdata *strdata);
 void		ft_pf_conv_f(t_vardata *vardata, \
 t_strdata *strdata, long double nb, char *str);
 void		ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata);
+void		ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i);
 #endif	

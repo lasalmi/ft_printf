@@ -6,12 +6,12 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 14:06:24 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/15 14:23:48 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i);
+
 static	size_t ft_get_decimal(long double nb, char *temp, size_t i, t_strdata *strdata)
 {
 	int		decimal;
@@ -19,12 +19,12 @@ static	size_t ft_get_decimal(long double nb, char *temp, size_t i, t_strdata *st
 
 	count = (strdata->precision + 1);
 	temp[i++] = '.';
-	nb -= (int)nb; 
+	nb -= (long long)nb; 
 	while (count--)
 	{
 		nb *= 10;
 		temp[i++] = (int)nb + '0';
-		nb -= (int)nb;
+		nb -= (long long)nb;
 	}
 	temp[i] = '\0';
 	return (i - 1);
@@ -56,7 +56,7 @@ static	size_t ft_get_integral(long double nb, char *temp)
 	return (j);
 }
 
-void	ft_pf_conv_f2(t_vardata *vardata, t_strdata *strdata, \
+void	ft_pf_conv_f(t_vardata *vardata, t_strdata *strdata, \
 long double nb, char *str)
 {
 	char	*temp;
@@ -75,7 +75,7 @@ long double nb, char *str)
 		*str++ = temp[i++];
 }
 
-int	main(void)
+/*int	main(void)
 {
 	t_vardata varrit;
 	t_strdata data;
@@ -86,4 +86,4 @@ int	main(void)
 	char result[50];
 	ft_pf_conv_f2(&varrit, &data, nb, result);
 	printf("%s", result);
-}
+} */
