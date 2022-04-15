@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 13:23:46 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/15 13:41:04 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,7 @@ void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i)
 		ft_integral_extends(str, i);
 }
 
-int main(void)
+/*int main(void)
 {
 	t_strdata strdata;
 
@@ -101,4 +101,4 @@ int main(void)
 	test[i] = '\0';
 	ft_pf_round_f_str(&test, &strdata, 6);
 	printf("%s",test);
-}
+} */
