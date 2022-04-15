@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:07:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/14 12:52:03 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/15 12:50:25 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,8 @@ void	ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata)
 	ft_pf_check_f_flags(strdata);
 	ft_pf_get_double_len(&vardata, var, strdata);
 	strdata->variable_str = (char *)malloc(vardata.conv_len + 1);
+	if (!strdata->variable_str)
+		exit(1);
 	strdata->strlen = vardata.conv_len;
 	ptr = strdata->variable_str;
 	ft_pf_f_prefix(&ptr, strdata, var);

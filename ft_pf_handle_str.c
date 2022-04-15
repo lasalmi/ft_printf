@@ -6,13 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:15:21 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/03/21 16:26:41 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/15 09:58:24 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 /* Sets the ignored flags for char to zero */
-void ft_pf_validate_str_flags(t_strdata *strdata)
+void	ft_pf_validate_str_flags(t_strdata *strdata)
 {
 	t_flags	*flags;
 
@@ -22,7 +22,8 @@ void ft_pf_validate_str_flags(t_strdata *strdata)
 	flags->space = 0;
 	flags->sign = 0;
 }
-t_status ft_pf_handle_str_width(t_strdata *strdata)
+
+t_status	ft_pf_handle_str_width(t_strdata *strdata)
 {
 	t_status	ret;
 
@@ -38,16 +39,17 @@ t_status ft_pf_handle_str_width(t_strdata *strdata)
 	}
 	return (ret);
 }
-void ft_pf_handle_str(t_ft_controller *ft_controller, t_strdata *strdata)
+
+void	ft_pf_handle_str(t_ft_controller *ft_controller, t_strdata *strdata)
 {
-	t_status ret;
+	t_status	ret;
 
 	ft_pf_validate_str_flags(strdata);
-	ret = ft_pf_conv_str(ft_controller, strdata, va_arg(strdata->list, void*));
+	ret = ft_pf_conv_str(ft_controller, strdata, va_arg(strdata->list, void *));
 	if (ret != OKAY)
-		exit(1); /* Revisit this! */
+		exit(1);
 	ret = ft_pf_handle_str_width(strdata);
 	if (ret != OKAY)
-		exit(1); /* Revisit this! */
+		exit(1);
 	ft_pf_print(ft_controller, strdata);
 }
