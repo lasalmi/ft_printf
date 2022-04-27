@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:05:12 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 14:43:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:24:31 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ static int	ft_output_error(t_ft_controller *ft_controller, t_strdata *strdata)
 	return (1);
 }
 
-static void	ft_pf_print_padding(t_ft_controller *ft_controller, t_strdata *strdata)
+static void	ft_pf_print_padding(t_ft_controller *ft_controller, \
+t_strdata *strdata)
 {
 	int	ret;
 
@@ -39,7 +40,8 @@ static void	ft_pf_print_padding(t_ft_controller *ft_controller, t_strdata *strda
 	strdata->padding = NULL;
 }
 
-static void	ft_pf_print_variable(t_ft_controller *ft_controller, t_strdata *strdata)
+static void	ft_pf_print_variable(t_ft_controller *ft_controller, \
+t_strdata *strdata)
 {
 	int	ret;
 
@@ -54,10 +56,11 @@ static void	ft_pf_print_variable(t_ft_controller *ft_controller, t_strdata *strd
 	free(strdata->variable_str);
 	strdata->variable_str = NULL;
 }
+
 /* Prints the generated strings, frees the memory and adds written chars */
 void	ft_pf_print(t_ft_controller *ft_controller, t_strdata *strdata)
 {
-	t_flags *flags;
+	t_flags	*flags;
 
 	flags = &strdata->flags;
 	if (flags->padleft)

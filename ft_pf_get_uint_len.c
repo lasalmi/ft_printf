@@ -6,13 +6,20 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 08:25:12 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:13:16 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int		ft_pf_get_conv_base(t_strdata *strdata)
+static void	ft_init_vardata(t_vardata *vardata)
+{
+	vardata->zero_prec = 0;
+	vardata->conv_len = 0;
+	vardata->padlen = 0;
+}
+
+int	ft_pf_get_conv_base(t_strdata *strdata)
 {
 	if (strdata->working_format[-1] == 'x')
 		return (16);
@@ -30,10 +37,9 @@ void	ft_add_zeropad(char **str, size_t padlen)
 	size_t	i;
 
 	i = 0;
-	
 	while (padlen > 0)
 	{
-		str[0][i]= '0';
+		str[0][i] = '0';
 		i++;
 		padlen--;
 	}
@@ -60,32 +66,22 @@ void	ft_pf_add_0x(char **str, long long var, t_strdata *strdata)
 		}
 	}
 }
-/*!REVISIT STRLEN/INTLEN!5Conv_len total space required for uint conversion result str without \0 
-intlen for starting index for conversion, padlen to know how many pads
-and same for zero_prec */
-void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_strdata *strdata)
+
+void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, \
+int base, t_strdata *strdata)
 {
 	unsigned long long	backup;
 
 	backup = nb;
-	vardata->zero_prec = 0;
-	vardata->conv_len = 0;
-	vardata->padlen = 0;
+	ft_init_vardata(vardata);
 	if (nb == 0 && !strdata->explicit_zeroprec)
 		vardata->conv_len = 1;
-	while (nb > 0) /*&& !strdata->explicit_zeroprec)*/
+	while (nb > 0)
 	{
 		nb /= base;
 		vardata->conv_len++;
 	}
 	vardata->intlen = vardata->conv_len;
-//	strdata->strlen = vardata->intlen;
-//	ft_pf_check_zeropadding(vardata, strdata);
-//	if (strdata->precision > vardata->conv_len)
-//	{
-//		vardata->zero_prec = (strdata->precision - vardata->conv_len);
-//		vardata->conv_len += vardata->zero_prec; 
-//	}
 	if (strdata->flags.alt_form == 1 && backup != 0)
 	{
 		if (strdata->working_format[-1] == 'o')
@@ -95,12 +91,9 @@ void	ft_pf_get_uint_data(t_vardata *vardata, unsigned long long nb, int base, t_
 				strdata->precision--;
 		}
 		else
-			vardata->conv_len += 2;	
+			vardata->conv_len += 2;
 	}
-	if (vardata->conv_len < strdata->width /*&& strdata->precision <= vardata->intlen*/)
-	{
+	if (vardata->conv_len < strdata->width)
 		vardata->padlen = (strdata->width - vardata->conv_len);
-//		vardata->conv_len += vardata->padlen;
-	}
 	ft_pf_check_zeropadding(vardata, strdata);
 }

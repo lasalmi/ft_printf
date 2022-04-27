@@ -6,13 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:03:15 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/14 12:52:03 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:33:52 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void ft_pf_di_prefix(char **ptr, t_strdata *strdata, long long nb)
+static void	ft_pf_di_prefix(char **ptr, t_strdata *strdata, long long nb)
 {
 	t_flags	*flags;
 
@@ -25,30 +25,31 @@ static void ft_pf_di_prefix(char **ptr, t_strdata *strdata, long long nb)
 		*(*ptr)++ = '-';
 }
 
-static unsigned long long ft_pf_fetch_di_var(t_strdata *strdata)
+static unsigned long long	ft_pf_fetch_di_var(t_strdata *strdata)
 {
-	t_length len;
+	t_length	len;
 
 	len = strdata->flags.length;
 	if (len == PF_H)
-		return (short)va_arg(strdata->list, int);
+		return ((short)va_arg(strdata->list, int));
 	if (len == PF_HH)
 		return ((signed char)va_arg(strdata->list, int));
 	if (len == PF_LL)
-		return (va_arg(strdata->list, long long));
+		return ((va_arg(strdata->list, long long)));
 	if (len == PF_L)
 		return ((long long)va_arg(strdata->list, long));
-	return (long long)va_arg(strdata->list, int);
+	return ((long long)va_arg(strdata->list, int));
 }
-static void ft_pf_check_di_flags(t_strdata *strdata)
+
+static void	ft_pf_check_di_flags(t_strdata *strdata)
 {
-	if (strdata->precision > 0 || strdata->flags.padleft == 1 || strdata->explicit_zeroprec)
+	if (strdata->precision > 0 || strdata->flags.padleft == 1 \
+	|| strdata->explicit_zeroprec)
 		strdata->flags.pad_with_zeroes = 0;
 	if (strdata->flags.sign)
 		strdata->flags.space = 0;
 }
 
-#include "ft_printf.h"
 /* HANDLING NEGATIVE VALUES IS BROKEN */
 void	ft_pf_handle_di(t_ft_controller *ft_controller, t_strdata *strdata)
 {

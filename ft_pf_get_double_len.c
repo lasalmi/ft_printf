@@ -6,13 +6,14 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/13 12:14:28 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:23:04 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_pf_check_double(t_vardata *vardata, long double nb, t_strdata *strdata)
+static void	ft_pf_check_double(t_vardata *vardata, \
+long double nb, t_strdata *strdata)
 {
 	if (strdata->precision == 0 && !strdata->flags.alt_form && nb >= 0.00L)
 		return ;
@@ -28,10 +29,11 @@ static void	ft_pf_check_double(t_vardata *vardata, long double nb, t_strdata *st
 	vardata->conv_len += strdata->precision;
 }
 
-void	ft_pf_get_double_len(t_vardata *vardata, long double nb, t_strdata *strdata)
+void	ft_pf_get_double_len(t_vardata *vardata, \
+long double nb, t_strdata *strdata)
 {
 	long long	firstpart;
-	
+
 	firstpart = (long long)nb;
 	vardata->zero_prec = 0;
 	vardata->conv_len = 0;

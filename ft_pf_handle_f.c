@@ -6,12 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:07:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 12:50:25 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:27:00 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-static void ft_pf_check_f_flags(t_strdata *strdata)
+
+static void	ft_pf_check_f_flags(t_strdata *strdata)
 {
 	if (strdata->flags.padleft == 1)
 		strdata->flags.pad_with_zeroes = 0;
@@ -21,7 +22,7 @@ static void ft_pf_check_f_flags(t_strdata *strdata)
 		strdata->precision = 6;
 }
 
-static void ft_pf_f_prefix(char **ptr, t_strdata *strdata, long double nb)
+static void	ft_pf_f_prefix(char **ptr, t_strdata *strdata, long double nb)
 {
 	t_flags	*flags;
 
@@ -34,21 +35,22 @@ static void ft_pf_f_prefix(char **ptr, t_strdata *strdata, long double nb)
 		*(*ptr)++ = '-';
 }
 
-static long double ft_pf_fetch_f_var(t_strdata *strdata)
+static long double	ft_pf_fetch_f_var(t_strdata *strdata)
 {
-	t_length len;
+	t_length	len;
 
 	len = strdata->flags.length;
 	if (len == PF_LONGD)
 		return ((long double)va_arg(strdata->list, long double));
-	return (long double)va_arg(strdata->list, double);
+	return ((long double)va_arg(strdata->list, double));
 }
+
 /* TO DO: Fetcher for variable, flags checker, call len, malloc, prefix adder, precision
 and zeropadding, call converter, ADD MALLOCFAIL PROT! */
 void	ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata)
 {
-	t_vardata vardata;
-	long double var;
+	t_vardata	vardata;
+	long double	var;
 	char		*ptr;
 
 	var = ft_pf_fetch_f_var(strdata);

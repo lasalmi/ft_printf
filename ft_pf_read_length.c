@@ -6,10 +6,9 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/23 14:06:43 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 09:46:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 14:46:45 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "ft_printf.h"
 /*Sets length to len and moves the strdata pointer forward the amount needed*/

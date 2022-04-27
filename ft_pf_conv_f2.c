@@ -6,20 +6,21 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 14:31:32 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 15:28:55 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static	size_t ft_get_decimal(long double nb, char *temp, size_t i, t_strdata *strdata)
+static	size_t	ft_get_decimal(long double nb, char *temp, \
+size_t i, t_strdata *strdata)
 {
 	int		decimal;
 	size_t	count;
 
 	count = strdata->precision + 1;
 	temp[i++] = '.';
-	nb -= (long long)nb; 
+	nb -= (long long)nb;
 	while (count--)
 	{
 		nb *= 10;
@@ -30,7 +31,7 @@ static	size_t ft_get_decimal(long double nb, char *temp, size_t i, t_strdata *st
 	return (i - 1);
 }
 
-static	size_t ft_get_integral(long double nb, char *temp)
+static	size_t	ft_get_integral(long double nb, char *temp)
 {
 	unsigned long long	integral;
 	char				result[20];
@@ -68,7 +69,7 @@ long double nb, char *str)
 	if (nb < 0)
 		nb *= -1;
 	i = ft_get_integral(nb, temp);
-	i = ft_get_decimal(nb , temp, i, strdata);
+	i = ft_get_decimal(nb, temp, i, strdata);
 	ft_pf_round_f_str(&temp, strdata, i);
 	i = 0;
 	while (temp[i])
