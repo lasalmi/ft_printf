@@ -7,4 +7,5 @@ output
 printf_test/
 test*
 user*
+diff*
 .gitignore
