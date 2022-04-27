@@ -6,11 +6,12 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:26:07 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 14:50:07 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:10:19 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 /* Sets the ignored flags for char to zero */
 void	ft_pf_validate_c_flags(t_strdata *strdata)
 {
@@ -23,7 +24,7 @@ void	ft_pf_validate_c_flags(t_strdata *strdata)
 	flags->sign = 0;
 }
 
-t_status ft_pf_handle_char_width(t_strdata *strdata)
+t_status	ft_pf_handle_char_width(t_strdata *strdata)
 {
 	t_status	ret;
 
@@ -42,7 +43,7 @@ t_status ft_pf_handle_char_width(t_strdata *strdata)
 
 void	ft_pf_handle_char(t_ft_controller *ft_controller, t_strdata *strdata)
 {
-	t_status ret;
+	t_status	ret;
 
 	if (strdata->working_format[-1] == 'c')
 	ret = ft_pf_conv_char(ft_controller, strdata, va_arg(strdata->list, int));

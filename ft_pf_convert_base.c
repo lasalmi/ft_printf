@@ -6,13 +6,14 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:42:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 07:42:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:19:21 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static t_status	ft_pf_generate_hexastr(t_strdata *strdata, size_t count, char *buf)
+static t_status	ft_pf_generate_hexastr(t_strdata *strdata, \
+size_t count, char *buf)
 {
 	size_t	total_len;
 	size_t	i;
@@ -32,7 +33,7 @@ static t_status	ft_pf_generate_hexastr(t_strdata *strdata, size_t count, char *b
 }
 
 /* Counts the amount of zeropadding needed. The +2 f for 0x. */
-static size_t ft_pf_count_zeropad(t_strdata *strdata, size_t count)
+static size_t	ft_pf_count_zeropad(t_strdata *strdata, size_t count)
 {
 	if (strdata->width < (strdata->strlen + count + 2))
 		return (0);
@@ -40,10 +41,10 @@ static size_t ft_pf_count_zeropad(t_strdata *strdata, size_t count)
 		return (strdata->width - (strdata->strlen + count + 2));
 }
 
-static t_status ft_pf_check_precision(t_strdata *strdata, char *buf)
+static t_status	ft_pf_check_precision(t_strdata *strdata, char *buf)
 {
-	size_t added_zeroes;
-	t_status ret;
+	size_t		added_zeroes;
+	t_status	ret;
 
 	added_zeroes = 0;
 	ret = OKAY;
@@ -56,12 +57,13 @@ static t_status ft_pf_check_precision(t_strdata *strdata, char *buf)
 }
 
 /* Need to solve the issue with 0x, Precision and 0 padding. */
-t_status ft_pf_convert_hexa(t_ft_controller *ft_controller, t_strdata *strdata, long long ptr)
+t_status	ft_pf_convert_hexa(t_ft_controller *ft_controller, \
+t_strdata *strdata, long long ptr)
 {
-	char buffer[50];
-	static char table[] = "0123456789abcdef";
-	size_t i;
-	t_status ret;
+	char		buffer[50];
+	static char	table[] = "0123456789abcdef";
+	size_t		i;
+	t_status	ret;
 
 	i = 50;
 	buffer[--i] = '\0';
@@ -69,10 +71,9 @@ t_status ft_pf_convert_hexa(t_ft_controller *ft_controller, t_strdata *strdata, 
 		buffer[--i] = '0';
 	while (ptr > 0)
 	{
-		buffer[--i] = table[ptr%16];
+		buffer[--i] = table[ptr % 16];
 		ptr /= 16;
 	}
-//	strdata->variable_str = ft_strdup(&buffer[i]);
 	strdata->strlen = 49 - i;
 	ret = ft_pf_check_precision(strdata, &buffer[i]);
 	return (ret);

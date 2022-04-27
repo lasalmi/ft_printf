@@ -6,11 +6,12 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:19:34 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/14 12:33:00 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:17:34 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 /* We will convert whatever char it is and use
 is as a char input in our char converter */
 int	ft_pf_check_if_ouxx(t_strdata *strdata)
@@ -26,7 +27,7 @@ int	ft_pf_check_if_ouxx(t_strdata *strdata)
 	return (0);
 }
 
-t_stage ft_read_conversion(t_strdata *strdata)
+t_stage	ft_read_conversion(t_strdata *strdata)
 {
 	strdata->working_format += 1;
 	if (strdata->working_format[-1] == 'c')
@@ -39,7 +40,8 @@ t_stage ft_read_conversion(t_strdata *strdata)
 		return (FT_CONV_PTR);
 	if (ft_pf_check_if_ouxx(strdata))
 		return (FT_conv_oux);
-	if (strdata->working_format[-1] == 'd' || strdata->working_format[-1] == 'i')
+	if (strdata->working_format[-1] == 'd' \
+	|| strdata->working_format[-1] == 'i')
 		return (FT_CONV_DI);
 	return (FT_CONV_CHAR);
 }

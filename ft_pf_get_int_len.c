@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:05:29 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/11 05:51:27 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:11:06 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ void	ft_check_sign(t_vardata *vardata, long long nb, t_strdata *strdata)
 	if (nb < 0)
 		vardata->conv_len += 1;
 }
+
 void	ft_pf_get_sint_len(t_vardata *vardata, long long nb, t_strdata *strdata)
 {
-	long long working_nb;
+	long long	working_nb;
 
 	working_nb = nb;
 	vardata->zero_prec = 0;
@@ -43,8 +44,6 @@ void	ft_pf_get_sint_len(t_vardata *vardata, long long nb, t_strdata *strdata)
 	}
 	vardata->intlen = vardata->conv_len;
 	ft_check_sign(vardata, nb, strdata);
-//	if (strdata->precision > vardata->conv_len)
-//		vardata->conv_len = strdata->precision;
 	if (strdata->width > vardata->conv_len)
 		vardata->padlen = strdata->width - vardata->conv_len;
 	ft_pf_check_zeropadding(vardata, strdata);

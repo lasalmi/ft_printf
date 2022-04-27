@@ -6,20 +6,22 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 13:41:04 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/27 16:15:53 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-static void ft_norounding(char *str, size_t i)
+
+static void	ft_norounding(char *str, size_t i)
 {
 	str[i--] = '\0';
 	if (str[i] == '.')
 		str[i] = '\0';
 }
-static size_t ft_roundup(char *str, size_t len, t_strdata *strdata)
+
+static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
 {
-	size_t i;
+	size_t	i;
 
 	i = len - 1;
 	if (str[i] == '.')
@@ -42,19 +44,15 @@ static size_t ft_roundup(char *str, size_t len, t_strdata *strdata)
 	return (i);
 }
 
-static int	ft_digit_is_odd(char c)
-{
-	return (c == '1' || c == '3' || c == '5' || c == '7' || c == '9');
-}
-
 static int	ft_preceding_is_even(char *str)
 {
 	if (*--str == '.')
 		str--;
-	return (!ft_digit_is_odd(*str));
+	return (*str != '1' || *str != '3' || \
+	*str != '5' || *str != '7' || *str != '9');
 }
 
-static	void ft_integral_extends(char **str, size_t original_size)
+static	void	ft_integral_extends(char **str, size_t original_size)
 {
 	char	*to_free;
 	size_t	i;
@@ -75,7 +73,9 @@ static	void ft_integral_extends(char **str, size_t original_size)
 void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i)
 {
 	size_t	rounding_i;
-	if (str[0][i] <= '4' || (str[0][i] == '5' && ft_preceding_is_even(&str[0][i])))
+
+	if (str[0][i] <= '4' || (str[0][i] == '5' \
+	&& ft_preceding_is_even(&str[0][i])))
 	{
 		ft_norounding(*str, i);
 		return ;
