@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/29 08:49:24 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/29 09:11:38 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,10 @@ static void	ft_norounding(char *str, size_t i, int alt_form)
 		str[i] = '\0';
 }
 
-static int	ft_great_than_one(char *str)
+static int	ft_great_than_one(char *str, int zeroprec)
 {
+	if (zeroprec)
+		return (1);
 	if (*str == '-')
 		str++;
 	if (*str > '0' && *str <= '9')
@@ -88,7 +90,7 @@ void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i)
 	size_t	rounding_i;
 
 	if (str[0][i] <= '4' || (str[0][i] == '5' \
-	&& ft_preceding_is_even(&str[0][i]) && ft_great_than_one(*str)))
+	&& ft_preceding_is_even(&str[0][i]) && ft_great_than_one(*str, strdata->explicit_zeroprec)))
 	{
 		ft_norounding(*str, i, strdata->flags.alt_form);
 		return ;

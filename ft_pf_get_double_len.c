@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 15:23:04 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/29 09:34:21 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ long double nb, t_strdata *strdata)
 	if (strdata->precision == 0 && !strdata->flags.alt_form && nb >= 0.00L)
 		return ;
 	if (strdata->flags.sign || strdata->flags.space)
-		if (nb > 0)
+		if (nb >= 0)
 			vardata->conv_len += 1;
 	if (nb < 0.00L)
 		vardata->conv_len += 1;
