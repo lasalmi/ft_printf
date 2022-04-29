@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/29 09:11:38 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/29 13:29:18 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
 		str[i] = str[i] + 1;
 		if (!strdata->flags.alt_form || i > 0)
 			str[i + 1] = '\0';
+		return (i);
 	}
 	while (str[i] == '9' && i > 0)
 	{
@@ -90,7 +91,8 @@ void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i)
 	size_t	rounding_i;
 
 	if (str[0][i] <= '4' || (str[0][i] == '5' \
-	&& ft_preceding_is_even(&str[0][i]) && ft_great_than_one(*str, strdata->explicit_zeroprec)))
+	&& ft_preceding_is_even(&str[0][i]) && 
+	ft_great_than_one(*str, strdata->explicit_zeroprec)))
 	{
 		ft_norounding(*str, i, strdata->flags.alt_form);
 		return ;
