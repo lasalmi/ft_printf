@@ -6,17 +6,26 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 16:15:53 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/04/29 08:49:24 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_norounding(char *str, size_t i)
+static void	ft_norounding(char *str, size_t i, int alt_form)
 {
 	str[i--] = '\0';
-	if (str[i] == '.')
+	if (str[i] == '.' && !alt_form)
 		str[i] = '\0';
+}
+
+static int	ft_great_than_one(char *str)
+{
+	if (*str == '-')
+		str++;
+	if (*str > '0' && *str <= '9')
+		return (1);
+	return (0);
 }
 
 static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
@@ -29,7 +38,8 @@ static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
 	if (str[i] <= '8')
 	{
 		str[i] = str[i] + 1;
-		str[i + 1] = '\0';
+		if (!strdata->flags.alt_form || i > 0)
+			str[i + 1] = '\0';
 	}
 	while (str[i] == '9' && i > 0)
 	{
@@ -40,7 +50,8 @@ static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
 		if (str[i] <= '8' && str[i] >= '0')
 			str[i] = str[i] + 1;
 	}
-	str[len] = '\0';
+	if (!strdata->flags.alt_form)
+		str[len] = '\0';
 	return (i);
 }
 
@@ -48,11 +59,12 @@ static int	ft_preceding_is_even(char *str)
 {
 	if (*--str == '.')
 		str--;
-	return (*str != '1' || *str != '3' || \
-	*str != '5' || *str != '7' || *str != '9');
+	return (*str != '1' && *str != '3' && \
+	*str != '5' && *str != '7' && *str != '9');
 }
 
-static	void	ft_integral_extends(char **str, size_t original_size)
+static	void	ft_integral_extends(char **str, size_t original_size, \
+t_strdata *strdata)
 {
 	char	*to_free;
 	size_t	i;
@@ -67,6 +79,7 @@ static	void	ft_integral_extends(char **str, size_t original_size)
 		str[0][i] = to_free[i - 1];
 		i++;
 	}
+	strdata->strlen++;
 	free(to_free);
 }
 
@@ -75,14 +88,14 @@ void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i)
 	size_t	rounding_i;
 
 	if (str[0][i] <= '4' || (str[0][i] == '5' \
-	&& ft_preceding_is_even(&str[0][i])))
+	&& ft_preceding_is_even(&str[0][i]) && ft_great_than_one(*str)))
 	{
-		ft_norounding(*str, i);
+		ft_norounding(*str, i, strdata->flags.alt_form);
 		return ;
 	}
 	rounding_i = ft_roundup(*str, i, strdata);
 	if (rounding_i == 0 && str[0][rounding_i] == '9')
-		ft_integral_extends(str, i);
+		ft_integral_extends(str, i, strdata);
 }
 
 /*int main(void)
