@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/29 13:29:18 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/07 14:54:28 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
 	if (str[i] <= '8')
 	{
 		str[i] = str[i] + 1;
-		if (!strdata->flags.alt_form || i > 0)
+		if (!strdata->flags.alt_form && i > 0)
 			str[i + 1] = '\0';
 		return (i);
 	}
