@@ -16,6 +16,11 @@ void	ft_conv_oux(unsigned long long nb, int base, size_t intlen, char *str)
 {
 	static const char	table[] = "0123456789abcdef";
 
+	if (intlen == 0)
+	{
+		str[intlen] = '\0';
+		return ;
+	}
 	str[intlen--] = '\0';
 	if (nb == 0)
 		str[intlen] = '0';
