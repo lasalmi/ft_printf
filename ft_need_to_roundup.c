@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 15:47:00 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/09 15:33:29 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/09 18:34:10 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	ft_need_to_round_up(double d, int precision)
 	return (0);
 }
 
-#include <stdio.h>
+/*#include <stdio.h>
 
 int main(void)
 {
@@ -42,4 +42,4 @@ int main(void)
 	printf("%i", ft_need_to_round_up(dee, 1));
 //	printf("\n%.20f", dee);
 	return (0);
-}
+} */

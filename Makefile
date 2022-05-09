@@ -30,7 +30,8 @@ ft_pf_skip_leading_zeroes.c \
 ft_pf_handle_f.c \
 ft_pf_conv_f2.c \
 ft_pf_round_f_str.c \
-ft_pf_get_double_len.c
+ft_pf_get_double_len.c \
+ft_need_to_roundup.c
 SOURCE_DIR = ./
 SOURCES := $(addprefix $(SOURCE_DIR),$(SOURCE_FILES))
 OBJECTS := $(SOURCES:.c=.o)

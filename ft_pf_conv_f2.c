@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 15:28:55 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/09 18:36:49 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ long double nb, char *str)
 		nb *= -1;
 	i = ft_get_integral(nb, temp);
 	i = ft_get_decimal(nb, temp, i, strdata);
-	ft_pf_round_f_str(&temp, strdata, i);
+	ft_pf_round_f_str(&temp, strdata, i, nb);
 	i = 0;
 	while (temp[i])
 		*str++ = temp[i++];

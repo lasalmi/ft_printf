@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/15 14:11:04 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/09 18:35:12 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,5 +153,6 @@ long double nb, t_strdata *strdata);
 void		ft_pf_conv_f(t_vardata *vardata, \
 t_strdata *strdata, long double nb, char *str);
 void		ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata);
-void		ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i);
+void		ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i, double nb);
+int			ft_need_to_round_up(double d, int precision);
 #endif	
