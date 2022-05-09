@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 15:47:00 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/08 17:04:32 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/09 15:19:10 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,20 @@
 int	ft_need_to_round_up(double d, int precision)
 {
 	long long previous;
+	long double remainder;
 
+	remainder = (long double)d;
 	if (!precision)
 		previous = (long long)d;
-	d -= (long long)d;
+	remainder -= (long long)d;
 	while (precision--)
 	{
-		d *= (double)10.0;
+		remainder *= 10.0L;
 		if (precision == 0)
 			previous = (long long)d;
-		d -= (long long)d;
+		remainder -= (long long)d;
 	}
-	if (d > 0.5L || (previous % 2 != 0 && d == 0.5))
+	if (remainder > 0.5L || (previous % 2 != 0 && remainder == 0.5))
 		return (1);
 	return (0);
 }
@@ -34,22 +36,10 @@ int	ft_need_to_round_up(double d, int precision)
 
 int main(void)
 {
-	double dee = 1.5550;
-	char test[10];
-	double test2 = dee;
-
-	test2 -= (long long)test2;
-	int precision = 4;
-	int i = 0;
-
-	while (precision--)
-	{
-		test2 *= 10;
-		test[i++] = (long long)test2 + '0';
-		test2 -= (long long)test2;
-	}
-	test[i] = '\0';
-	printf("%.3f %d", dee, ft_need_to_round_up(dee, 3));
-	printf("%s", test);
+	double dee = 0.05;
+	double bee = dee * 10.0L;
+//	dee *= 10.0f;
+	printf("%i", ft_need_to_round_up(dee, 1));
+//	printf("\n%.20f", dee);
 	return (0);
 }
