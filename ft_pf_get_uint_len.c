@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 15:13:16 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 14:28:19 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,11 +76,13 @@ int base, t_strdata *strdata)
 	ft_init_vardata(vardata);
 	if (nb == 0 && !strdata->explicit_zeroprec)
 		vardata->conv_len = 1;
-	while (nb > 0)
+	else
+		vardata->conv_len += ft_uintlen(nb);
+/*	while (nb > 0)
 	{
 		nb /= base;
 		vardata->conv_len++;
-	}
+	} */
 	vardata->intlen = vardata->conv_len;
 	if (strdata->flags.alt_form == 1 && backup != 0)
 	{

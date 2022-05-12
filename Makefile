@@ -11,17 +11,10 @@ ft_pf_conv_str.c \
 ft_pf_handle_str.c \
 ft_pf_convert_base.c \
 ft_pf_handle_ptr.c \
-ft_strdup.c \
-ft_strlen.c \
-ft_isdigit.c \
-ft_strlcpy.c \
 ft_pf_oux_handler.c \
 ft_conv_oux.c \
 ft_pf_get_uint_len.c \
 ft_pf_get_int_len.c \
-ft_toupper.c \
-ft_strnequ.c \
-ft_strncmp.c \
 ft_pf_read_length.c \
 ft_pf_check_zeropadding.c \
 ft_pf_conv_di.c \
@@ -32,9 +25,21 @@ ft_pf_conv_f2.c \
 ft_pf_round_f_str.c \
 ft_pf_get_double_len.c \
 ft_need_to_roundup.c
+LIB_FILES = ft_strdup.c \
+ft_strlen.c \
+ft_isdigit.c \
+ft_strlcpy.c \
+ft_toupper.c \
+ft_strnequ.c \
+ft_strncmp.c \
+ft_uintlen.c
 SOURCE_DIR = ./
+LIB_DIR = ./libft/
 SOURCES := $(addprefix $(SOURCE_DIR),$(SOURCE_FILES))
+LIBSOURCES := $(addprefix $(LIB_DIR),$(LIB_FILES))
 OBJECTS := $(SOURCES:.c=.o)
+LIBOBJECTS := $(LIB_FILES:.c=.o)
+LIB_NAME = libft.a
 #OBJECTS += ft_strdup.o ft_strlen.o ft_isdigit.o
 NAME = libftprintf.a
 
@@ -47,18 +52,26 @@ all : $(NAME)
 
 re : fclean all
 
-$(NAME) : $(OBJECTS)
-	ar rcs $(NAME) $(OBJECTS)
+$(NAME) : $(OBJECTS) libft
+	ar rcs $(NAME) $(OBJECTS) $(LIBOBJECTS)
 
 $(OBJECTS) : $(SOURCES)
 	gcc -g -c $(SOURCES)
+
+libft : $(LIB_NAME)
+	ar -xv $(LIB_DIR)$(LIB_NAME) $(LIBOBJECTS)
+
+$(LIB_NAME) :
+	make -C libft/
 
 TEST : $(NAME) main.c
 	gcc -g -Ilibft -I. -L. main.c -lftprintf
 	./a.out
 
 clean : 
-	rm -f $(OBJECTS)
+	rm -f $(OBJECTS) $(LIBOBJECTS)
+	make clean -C libft/
 
 fclean : clean
 	rm -f $(NAME)
+	make fclean -C libft/

@@ -6,15 +6,15 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 15:47:00 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/11 16:43:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 14:23:36 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 /* Bankers rounding with previous digit, otherwise to closest */
 int	ft_need_to_round_up(double d, int precision)
 {
-	long long previous;
-	long double remainder;
+	long long	previous;
+	long double	remainder;
 
 	remainder = (long double)d;
 	if (!precision)
