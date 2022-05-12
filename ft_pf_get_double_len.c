@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/12 15:46:49 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 18:58:06 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,10 +35,7 @@ long double nb, t_strdata *strdata)
 	long long	firstpart;
 
 	firstpart = (long long)nb;
-	/*
-	vardata->zero_prec = 0;
-	vardata->conv_len = 0;
-	vardata->padlen = 0;*/
+	ft_pf_init_vardata(vardata);
 	if (firstpart < 0)
 		firstpart *= -1;
 	if (firstpart == 0)

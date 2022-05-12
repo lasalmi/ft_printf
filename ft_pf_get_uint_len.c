@@ -6,11 +6,24 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/12 15:50:52 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 18:50:59 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static void ft_measure_altform(t_strdata *strdata, t_vardata *vardata)
+{
+	
+	if (strdata->working_format[-1] == 'o')
+	{
+		vardata->conv_len += 1;
+		if (strdata->precision > vardata->intlen)
+			strdata->precision--;
+	}
+	else
+		vardata->conv_len += 2;
+}
 
 int	ft_pf_get_conv_base(t_strdata *strdata)
 {
@@ -76,16 +89,7 @@ int base, t_strdata *strdata)
 	}
 	vardata->intlen = vardata->conv_len;
 	if (strdata->flags.alt_form == 1 && backup != 0)
-	{
-		if (strdata->working_format[-1] == 'o')
-		{
-			vardata->conv_len += 1;
-			if (strdata->precision > vardata->intlen)
-				strdata->precision--;
-		}
-		else
-			vardata->conv_len += 2;
-	}
+		ft_measure_altform(strdata, vardata);
 	if (vardata->conv_len < strdata->width)
 		vardata->padlen = (strdata->width - vardata->conv_len);
 	ft_pf_check_zeropadding(vardata, strdata);
