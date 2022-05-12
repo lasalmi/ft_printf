@@ -24,7 +24,8 @@ ft_pf_handle_f.c \
 ft_pf_conv_f2.c \
 ft_pf_round_f_str.c \
 ft_pf_get_double_len.c \
-ft_need_to_roundup.c
+ft_need_to_roundup.c \
+ft_pf_initializers.c
 LIB_FILES = ft_strdup.c \
 ft_strlen.c \
 ft_isdigit.c \

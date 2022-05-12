@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/12 14:27:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 15:53:40 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ void		ft_pf_handle_ptr(t_ft_controller *ft_controller, \
 t_strdata *strdata);
 t_status	ft_pf_convert_hexa(t_ft_controller *ft_controller, \
 t_strdata *strdata, long long ptr);
-void		ft_init_strdata(t_strdata *data_to_init);
+void		ft_pf_init_strdata(t_strdata *data_to_init);
 char		*ft_strdup(const char *s1);
 size_t		ft_strlen(const char *s);
 int			ft_toupper(int c);
@@ -156,4 +156,8 @@ t_strdata *strdata, long double nb, char *str);
 void		ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata);
 void		ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i, double nb);
 int			ft_need_to_round_up(double d, int precision);
+void		ft_pf_init_ft_controller(t_ft_controller *ft_controller);
+void		ft_pf_init_strdata(t_strdata *data_to_init);
+void		ft_pf_init_flags(t_flags *flags_to_init);
+void		ft_pf_init_vardata(t_vardata *vardata);
 #endif	

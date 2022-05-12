@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/13 11:48:51 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 15:51:43 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,34 +77,6 @@ t_status ft_check_character(const char c)
 	return (OKAY);
 }
 
-static void ft_init_flags(t_flags *flags_to_init)
-{
-	flags_to_init->space = 0;
-	flags_to_init->padleft = 0;
-	flags_to_init->sign = 0;
-	flags_to_init->pad_with_zeroes = 0;
-	flags_to_init->alt_form = 0;
-	flags_to_init->length = PF_INIT;
-}
-
-void	ft_init_strdata(t_strdata *data_to_init)
-{
-	ft_init_flags(&data_to_init->flags);
-	data_to_init->width = 0;
-	data_to_init->precision = 0;
-	data_to_init->explicit_zeroprec = 0;
-	data_to_init->variable_str = NULL;
-	data_to_init->padding = NULL;
-}
-
-static void ft_init_ft_controller(t_ft_controller *ft_controller)
-{
-	ft_controller->stage = FT_READ_PRINT;
-	ft_controller->chars_written = 0;
-	ft_controller->to_print = NULL;
-	ft_controller->format_i = 0;
-//	ft_controller->last_status = OKAY;
-}
 void		ft_pf_reset_strdata(t_strdata *strdata)
 {
 	strdata->explicit_zeroprec = 0;
@@ -113,7 +85,7 @@ void		ft_pf_reset_strdata(t_strdata *strdata)
 	strdata->variable_str = NULL;
 	strdata->width = 0;
 	strdata->strlen = 0;
-	ft_init_flags(&strdata->flags);
+	ft_pf_init_flags(&strdata->flags);
 }
 
 int	ft_printf(const char *input_format, ...)
@@ -125,8 +97,8 @@ int	ft_printf(const char *input_format, ...)
 
 	va_start(strdata.list, input_format);
 	strdata.working_format = input_format;
-	ft_init_ft_controller(&ft_controller);
-	ft_init_strdata(&strdata);
+	ft_pf_init_ft_controller(&ft_controller);
+	ft_pf_init_strdata(&strdata);
 	while (ft_controller.stage != FT_END && ft_controller.stage != -1)
 	{
 		if (ft_controller.stage == FT_READ_PRINT)

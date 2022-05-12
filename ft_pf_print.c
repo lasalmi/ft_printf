@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:05:12 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 15:24:31 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 15:51:27 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,6 @@ void	ft_pf_print(t_ft_controller *ft_controller, t_strdata *strdata)
 	ft_pf_print_variable(ft_controller, strdata);
 	if (ft_controller->stage == FT_END)
 		return ;
-	ft_init_strdata(strdata);
+	ft_pf_init_strdata(strdata);
 	ft_controller->stage = FT_READ_PRINT;
 }

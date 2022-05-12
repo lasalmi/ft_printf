@@ -6,18 +6,11 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/12 14:28:19 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/12 15:50:52 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
-static void	ft_init_vardata(t_vardata *vardata)
-{
-	vardata->zero_prec = 0;
-	vardata->conv_len = 0;
-	vardata->padlen = 0;
-}
 
 int	ft_pf_get_conv_base(t_strdata *strdata)
 {
@@ -73,16 +66,14 @@ int base, t_strdata *strdata)
 	unsigned long long	backup;
 
 	backup = nb;
-	ft_init_vardata(vardata);
+	ft_pf_init_vardata(vardata);
 	if (nb == 0 && !strdata->explicit_zeroprec)
 		vardata->conv_len = 1;
-	else
-		vardata->conv_len += ft_uintlen(nb);
-/*	while (nb > 0)
+	while (nb > 0)
 	{
 		nb /= base;
 		vardata->conv_len++;
-	} */
+	}
 	vardata->intlen = vardata->conv_len;
 	if (strdata->flags.alt_form == 1 && backup != 0)
 	{
