@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 12:56:21 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 14:44:08 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ static int	ft_infnanlen(long double nb, t_strdata *strdata, t_vardata *vardata)
 		return (0);
 	vardata->intlen = 3;
 	if (nb == -1.0 / 0)
+		vardata->conv_len = 4;
+	else if (nb == 1.0 / 0 && (strdata->flags.sign || strdata->flags.space))
 		vardata->conv_len = 4;
 	else
 		vardata->conv_len = 3;
