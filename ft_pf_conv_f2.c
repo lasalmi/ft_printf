@@ -6,11 +6,26 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/09 18:36:49 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 12:57:27 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+static int	ft_infnan(long double nb, char *str)
+{
+	if (nb != nb)
+	{
+		ft_strlcpy(str, "nan", 4);
+		return (1);
+	}
+	if (nb == -1.0 / 0 || nb == 1.0 / 0)
+	{
+		ft_strlcpy(str, "inf", 4);
+		return (1);
+	}
+	return (0);
+}
 
 static	size_t	ft_get_decimal(long double nb, char *temp, \
 size_t i, t_strdata *strdata)
@@ -63,6 +78,8 @@ long double nb, char *str)
 	char	*temp;
 	size_t	i;
 
+	if (ft_infnan(nb, str))
+		return ;
 	temp = (char *)malloc((size_t)(vardata->intlen + strdata->precision + 5));
 	if (!temp)
 		exit(1);

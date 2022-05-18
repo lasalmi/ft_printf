@@ -6,12 +6,27 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/12 18:58:06 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 12:56:21 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
+static int	ft_infnanlen(long double nb, t_strdata *strdata, t_vardata *vardata)
+{
+	if (nb == nb && nb != -1.0 / 0 && nb != 1.0 / 0)
+		return (0);
+	vardata->intlen = 3;
+	if (nb == -1.0 / 0)
+		vardata->conv_len = 4;
+	else
+		vardata->conv_len = 3;
+	if (strdata->width > vardata->conv_len)
+		vardata->padlen = strdata->width - vardata->conv_len;
+	if (strdata->flags.pad_with_zeroes)
+		strdata->flags.pad_with_zeroes = 0;
+	return (1);
+}
 static void	ft_pf_check_double(t_vardata *vardata, \
 long double nb, t_strdata *strdata)
 {
@@ -36,6 +51,8 @@ long double nb, t_strdata *strdata)
 
 	firstpart = (long long)nb;
 	ft_pf_init_vardata(vardata);
+	if (ft_infnanlen(nb, strdata, vardata))
+		return ;
 	if (firstpart < 0)
 		firstpart *= -1;
 	if (firstpart == 0)
