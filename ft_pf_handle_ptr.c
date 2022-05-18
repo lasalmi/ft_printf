@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:38:32 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ static void	ft_pf_check_hexa_flags(t_strdata *strdata)
 		strdata->flags.alt_form = 1;
 }
 
-void	ft_pf_handle_ptr(t_pf_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_handle_ptr(t_pf_controller *pf_controller, t_strdata *strdata)
 {
 	t_status	ret;
 
 	ft_pf_check_hexa_flags(strdata);
-	ret = ft_pf_convert_hexa(ft_controller, strdata, \
+	ret = ft_pf_convert_hexa(pf_controller, strdata, \
 	va_arg(strdata->list, long long));
 	if (ret != OKAY)
 		exit(1);
 	if (strdata->strlen < strdata->width && strdata->flags.pad_with_zeroes == 0)
 		ft_pf_pad_with(strdata, ' ');
-	ft_pf_print(ft_controller, strdata);
+	ft_pf_print(pf_controller, strdata);
 }

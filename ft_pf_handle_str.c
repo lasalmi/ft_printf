@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:15:21 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,16 +40,16 @@ t_status	ft_pf_handle_str_width(t_strdata *strdata)
 	return (ret);
 }
 
-void	ft_pf_handle_str(t_pf_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_handle_str(t_pf_controller *pf_controller, t_strdata *strdata)
 {
 	t_status	ret;
 
 	ft_pf_validate_str_flags(strdata);
-	ret = ft_pf_conv_str(ft_controller, strdata, va_arg(strdata->list, void *));
+	ret = ft_pf_conv_str(pf_controller, strdata, va_arg(strdata->list, void *));
 	if (ret != OKAY)
 		exit(1);
 	ret = ft_pf_handle_str_width(strdata);
 	if (ret != OKAY)
 		exit(1);
-	ft_pf_print(ft_controller, strdata);
+	ft_pf_print(pf_controller, strdata);
 }

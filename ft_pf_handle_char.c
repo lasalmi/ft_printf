@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:26:07 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,18 +41,18 @@ t_status	ft_pf_handle_char_width(t_strdata *strdata)
 	return (ret);
 }
 
-void	ft_pf_handle_char(t_pf_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_handle_char(t_pf_controller *pf_controller, t_strdata *strdata)
 {
 	t_status	ret;
 
 	if (strdata->working_format[-1] == 'c')
-	ret = ft_pf_conv_char(ft_controller, strdata, va_arg(strdata->list, int));
+	ret = ft_pf_conv_char(pf_controller, strdata, va_arg(strdata->list, int));
 	else
-	ret = ft_pf_conv_char(ft_controller, strdata, strdata->working_format[-1]);
+	ret = ft_pf_conv_char(pf_controller, strdata, strdata->working_format[-1]);
 	if (ret != OKAY)
 		exit(1);
 	ret = ft_pf_handle_char_width(strdata);
 	if (ret != OKAY)
 		exit(1);
-	ft_pf_print(ft_controller, strdata);
+	ft_pf_print(pf_controller, strdata);
 }

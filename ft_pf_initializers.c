@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:48:08 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	ft_pf_init_strdata(t_strdata *data_to_init)
 	data_to_init->padding = NULL;
 }
 
-void	ft_pf_init_pf_controller(t_pf_controller *ft_controller)
+void	ft_pf_init_pf_controller(t_pf_controller *pf_controller)
 {
-	ft_controller->stage = FT_READ_PRINT;
-	ft_controller->chars_written = 0;
-	ft_controller->to_print = NULL;
-	ft_controller->format_i = 0;
+	pf_controller->stage = FT_READ_PRINT;
+	pf_controller->chars_written = 0;
+	pf_controller->to_print = NULL;
+	pf_controller->format_i = 0;
 }
