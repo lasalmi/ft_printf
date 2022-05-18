@@ -1,116 +1,108 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_conv_f.c                                     :+:      :+:    :+:   */
+/*   ft_pf_conv_f2.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/04/06 06:13:44 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/14 12:41:56 by lasalmi          ###   ########.fr       */
+/*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
+/*   Updated: 2022/05/18 12:57:27 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	ft_pf_f_leading_zeroes(unsigned long long nb, t_strdata *strdata, \
-char *str)
+static int	ft_infnan(long double nb, char *str)
 {
-	size_t	len;
-	int		diff;
-
-	len = 0;
-	while (nb > 0)
+	if (nb != nb)
 	{
-		len++;
-		nb /= 10;
+		ft_strlcpy(str, "nan", 4);
+		return (1);
 	}
-	while (strdata->precision + 1 > 0)
+	if (nb == -1.0 / 0 || nb == 1.0 / 0)
 	{
-		str[strdata->precision-- + 1] = '0';
+		ft_strlcpy(str, "inf", 4);
+		return (1);
 	}
+	return (0);
 }
 
-static long long	ft_pf_power_of_ten(int power)
+static	size_t	ft_get_decimal(long double nb, char *temp, \
+size_t i, t_strdata *strdata)
 {
-	long long	result;
+	int		decimal;
+	size_t	count;
 
-	result = 1;
-	while (power-- > 0)
-		result *= 10;
-	return (result);
+	count = strdata->precision + 1;
+	temp[i++] = '.';
+	nb -= (long long)nb;
+	while (count--)
+	{
+		nb *= 10;
+		temp[i++] = (int)nb + '0';
+		nb -= (long long)nb;
+	}
+	temp[i] = '\0';
+	return (i - 1);
 }
 
-static unsigned long long	ft_pf_round_f(t_strdata *strdata, long double nb)
+static	size_t	ft_get_integral(long double nb, char *temp)
 {
-	long long			remove;
-	unsigned long long	result;
-	long double			round;
-	uint8_t				is_negative;
+	unsigned long long	integral;
+	char				result[20];
+	size_t				i;
+	size_t				j;
 
-	is_negative = 0;
-	if (nb < 0)
-		nb *= -1;
-	remove = nb;
-	nb -= remove;
-	result = (unsigned long long)(nb * ft_pf_power_of_ten(strdata->precision));
-	return (result);
-}
-
-static void	ft_pf_convert_d_decimal(t_vardata *vardata, \
-unsigned long long result, char *str, t_strdata *strdata)
-{
-	unsigned long long	for_zeroes;
-
-	for_zeroes = result;
-	str[strdata->precision-- + 1] = '\0';
-	if (strdata->explicit_zeroprec && strdata->flags.alt_form)
+	j = 0;
+	i = 18;
+	result[19] = '\0';
+	integral = (unsigned long long)nb;
+	if (!integral)
 	{
-		str[0] = '.';
-		return ;
+		temp[j++] = '0';
+		return (j);
 	}
-	while (result > 0 && (strdata->precision + 1) > 0)
+	while (integral > 0)
 	{
-		str[strdata->precision-- + 1] = (result % 10) + '0';
-		result /= 10;
+		result[i--] = (integral % 10) + '0';
+		integral /= 10;
 	}
-	ft_pf_f_leading_zeroes(for_zeroes, strdata, str);
-	str[strdata->precision + 1] = '.';
-}
-
-static void	ft_pf_convert_f_int(t_vardata *vardata, long double nb, char *str)
-{
-	long long	result;
-	size_t		i;
-
-	i = (size_t)vardata->intlen;
-	if (nb < 0)
-		nb *= -1;
-	result = (long long)nb;
-	if (result == 0)
-		str[--i] = '0';
-	while (result > 0)
-	{
-		str[--i] = (result % 10) + '0';
-		result /= 10;
-	}
+	while (result[++i])
+		temp[j++] = result[i];
+	return (j);
 }
 
 void	ft_pf_conv_f(t_vardata *vardata, t_strdata *strdata, \
 long double nb, char *str)
 {
-	unsigned long long	frac;
-	uint8_t				is_negative;
+	char	*temp;
+	size_t	i;
 
-	frac = 0;
-	if (nb < 0.0L)
-	{
+	if (ft_infnan(nb, str))
+		return ;
+	temp = (char *)malloc((size_t)(vardata->intlen + strdata->precision + 5));
+	if (!temp)
+		exit(1);
+	if (nb < 0)
 		nb *= -1;
-		is_negative = 1;
-	}
-	ft_pf_convert_f_int(vardata, nb, str);
-	nb -= (int)nb;
-	frac = nb * ft_pf_power_of_ten(strdata->precision + 1);
-	frac += 5;
-	frac /= 10;
-	ft_pf_convert_d_decimal(vardata, frac, str + vardata->intlen, strdata);
+	i = ft_get_integral(nb, temp);
+	i = ft_get_decimal(nb, temp, i, strdata);
+	ft_pf_round_f_str(&temp, strdata, i, nb);
+	i = 0;
+	while (temp[i])
+		*str++ = temp[i++];
+	free(temp);
 }
+
+/*int	main(void)
+{
+	t_vardata varrit;
+	t_strdata data;
+
+	data.precision = 2;
+	long double nb = 3.9999;
+	varrit.intlen = 1;
+	char result[50];
+	ft_pf_conv_f2(&varrit, &data, nb, result);
+	printf("%s", result);
+} */
