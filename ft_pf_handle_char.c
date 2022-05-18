@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:26:07 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 16:10:19 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ t_status	ft_pf_handle_char_width(t_strdata *strdata)
 	return (ret);
 }
 
-void	ft_pf_handle_char(t_ft_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_handle_char(t_pf_controller *ft_controller, t_strdata *strdata)
 {
 	t_status	ret;
 

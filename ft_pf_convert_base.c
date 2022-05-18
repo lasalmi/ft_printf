@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:42:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 16:19:21 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_status	ft_pf_check_precision(t_strdata *strdata, char *buf)
 }
 
 /* Need to solve the issue with 0x, Precision and 0 padding. */
-t_status	ft_pf_convert_hexa(t_ft_controller *ft_controller, \
+t_status	ft_pf_convert_hexa(t_pf_controller *ft_controller, \
 t_strdata *strdata, long long ptr)
 {
 	char		buffer[50];

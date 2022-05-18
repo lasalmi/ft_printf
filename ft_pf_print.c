@@ -6,13 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:05:12 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/12 15:51:27 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static int	ft_output_error(t_ft_controller *ft_controller, t_strdata *strdata)
+static int	ft_output_error(t_pf_controller *ft_controller, t_strdata *strdata)
 {
 	ft_controller->chars_written = -1;
 	free(strdata->variable_str);
@@ -23,7 +23,7 @@ static int	ft_output_error(t_ft_controller *ft_controller, t_strdata *strdata)
 	return (1);
 }
 
-static void	ft_pf_print_padding(t_ft_controller *ft_controller, \
+static void	ft_pf_print_padding(t_pf_controller *ft_controller, \
 t_strdata *strdata)
 {
 	int	ret;
@@ -40,7 +40,7 @@ t_strdata *strdata)
 	strdata->padding = NULL;
 }
 
-static void	ft_pf_print_variable(t_ft_controller *ft_controller, \
+static void	ft_pf_print_variable(t_pf_controller *ft_controller, \
 t_strdata *strdata)
 {
 	int	ret;
@@ -58,7 +58,7 @@ t_strdata *strdata)
 }
 
 /* Prints the generated strings, frees the memory and adds written chars */
-void	ft_pf_print(t_ft_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_print(t_pf_controller *ft_controller, t_strdata *strdata)
 {
 	t_flags	*flags;
 

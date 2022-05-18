@@ -59,7 +59,7 @@ static void	ft_pf_check_oux_flags(t_strdata *strdata)
 strdata->flags.pad_with_zeroes = 0;
 }
 
-void	ft_pf_oux_handler(t_ft_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_oux_handler(t_pf_controller *ft_controller, t_strdata *strdata)
 {
 	t_vardata			vardata;
 	unsigned long long	var;

@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:26:51 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/14 12:47:48 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void	ft_readwidth(t_strdata *strdata)
 
 /* Moves the pointer one byte forward to skip the % and sends the working format
 to other functions to read the specifiers and move the pointer further*/
-void	ft_pf_read_specifiers(t_ft_controller *ft_controller, \
+void	ft_pf_read_specifiers(t_pf_controller *ft_controller, \
 t_strdata *strdata)
 {
 	strdata->working_format += 1;

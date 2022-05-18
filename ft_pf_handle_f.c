@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:07:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 12:42:51 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/18 15:13:44 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ static long double	ft_pf_fetch_f_var(t_strdata *strdata)
 
 /* TO DO: Fetcher for variable, flags checker, call len, malloc, prefix adder, precision
 and zeropadding, call converter, ADD MALLOCFAIL PROT! */
-void	ft_pf_handle_f(t_ft_controller *ft_controller, t_strdata *strdata)
+void	ft_pf_handle_f(t_pf_controller *ft_controller, t_strdata *strdata)
 {
 	t_vardata	vardata;
 	long double	var;
