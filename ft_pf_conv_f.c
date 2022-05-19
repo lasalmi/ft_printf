@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_conv_f2.c                                    :+:      :+:    :+:   */
+/*   ft_pf_conv_f.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 12:57:27 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/19 12:12:19 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,16 +93,3 @@ long double nb, char *str)
 		*str++ = temp[i++];
 	free(temp);
 }
-
-/*int	main(void)
-{
-	t_vardata varrit;
-	t_strdata data;
-
-	data.precision = 2;
-	long double nb = 3.9999;
-	varrit.intlen = 1;
-	char result[50];
-	ft_pf_conv_f2(&varrit, &data, nb, result);
-	printf("%s", result);
-} */

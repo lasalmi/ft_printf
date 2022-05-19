@@ -6,12 +6,12 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:48:44 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 15:29:10 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/19 12:15:00 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-/* Needs to be checked for handling signs for 0 padding */
+
 t_status	ft_pf_pad_with(t_strdata *strdata, char c)
 {
 	int	padsize;

@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:03:15 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/19 12:14:24 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,6 @@ static void	ft_pf_check_di_flags(t_strdata *strdata)
 		strdata->flags.space = 0;
 }
 
-/* HANDLING NEGATIVE VALUES IS BROKEN */
 void	ft_pf_handle_di(t_pf_controller *pf_controller, t_strdata *strdata)
 {
 	long long	var;

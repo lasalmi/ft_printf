@@ -6,14 +6,12 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:19:34 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 16:17:34 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/19 12:15:39 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-/* We will convert whatever char it is and use
-is as a char input in our char converter */
 int	ft_pf_check_if_ouxx(t_strdata *strdata)
 {
 	if (strdata->working_format[-1] == 'o')

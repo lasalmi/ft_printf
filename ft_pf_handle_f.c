@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:07:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/19 12:14:40 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,6 @@ static long double	ft_pf_fetch_f_var(t_strdata *strdata)
 	return ((long double)va_arg(strdata->list, double));
 }
 
-/* TO DO: Fetcher for variable, flags checker, call len, malloc, prefix adder, precision
-and zeropadding, call converter, ADD MALLOCFAIL PROT! */
 void	ft_pf_handle_f(t_pf_controller *pf_controller, t_strdata *strdata)
 {
 	t_vardata	vardata;
