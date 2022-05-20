@@ -12,7 +12,7 @@ ft_pf_handle_str.c \
 ft_pf_convert_base.c \
 ft_pf_handle_ptr.c \
 ft_pf_oux_handler.c \
-ft_conv_oux.c \
+ft_pf_conv_oux.c \
 ft_pf_get_uint_len.c \
 ft_pf_get_int_len.c \
 ft_pf_read_length.c \
@@ -24,7 +24,7 @@ ft_pf_handle_f.c \
 ft_pf_conv_f.c \
 ft_pf_round_f_str.c \
 ft_pf_get_double_len.c \
-ft_need_to_roundup.c \
+ft_pf_need_to_roundup.c \
 ft_pf_initializers.c
 LIB_FILES = ft_strdup.c \
 ft_strlen.c \

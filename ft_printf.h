@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 13:12:06 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 14:00:40 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ t_status	ft_pf_conv_char(t_pf_controller *pf_controller, t_strdata *strdata, \
 	int c);
 t_status	ft_pf_conv_str(t_pf_controller *pf_controller, t_strdata *strdata, \
 	char *str);
-t_stage		ft_read_conversion(t_strdata *strdata);
+t_stage		ft_pf_read_conv(t_strdata *strdata);
 void		ft_pf_print(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_pf_handle_char(t_pf_controller *pf_controller, \
 t_strdata *strdata);
@@ -156,7 +156,7 @@ t_strdata *strdata, long double nb, char *str);
 void		ft_pf_handle_f(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_pf_round_f_str(char **str, t_strdata *strdata, \
 size_t i, double nb);
-int			ft_need_to_round_up(double d, int precision);
+int			ft_pf_need_upround(double d, int precision);
 void		ft_pf_init_pf_controller(t_pf_controller *pf_controller);
 void		ft_pf_init_strdata(t_strdata *data_to_init);
 void		ft_pf_init_flags(t_flags *flags_to_init);

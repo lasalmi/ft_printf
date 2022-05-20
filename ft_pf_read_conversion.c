@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:19:34 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/19 12:15:39 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:59:22 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	ft_pf_check_if_ouxx(t_strdata *strdata)
 	return (0);
 }
 
-t_stage	ft_read_conversion(t_strdata *strdata)
+t_stage	ft_pf_read_conv(t_strdata *strdata)
 {
 	strdata->working_format += 1;
 	if (strdata->working_format[-1] == 'c')

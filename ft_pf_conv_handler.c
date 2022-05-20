@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:26:56 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:59:22 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	ft_conv_handler(t_pf_controller *pf_controller, t_strdata *strdata)
 {
-	pf_controller->stage = ft_read_conversion(strdata);
+	pf_controller->stage = ft_pf_read_conv(strdata);
 	if (pf_controller->stage < 0)
 		exit(1);
 	if (pf_controller->stage == FT_CONV_CHAR)
