@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/31 09:10:36 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 14:44:08 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:10:59 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ static int	ft_infnanlen(long double nb, t_strdata *strdata, t_vardata *vardata)
 		strdata->flags.pad_with_zeroes = 0;
 	return (1);
 }
+
 static void	ft_pf_check_double(t_vardata *vardata, \
 long double nb, t_strdata *strdata)
 {

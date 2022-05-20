@@ -6,15 +6,14 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/22 23:57:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/12 18:50:59 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:11:24 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void ft_measure_altform(t_strdata *strdata, t_vardata *vardata)
+static void	ft_measure_altform(t_strdata *strdata, t_vardata *vardata)
 {
-	
 	if (strdata->working_format[-1] == 'o')
 	{
 		vardata->conv_len += 1;
