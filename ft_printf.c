@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:24:33 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,16 +45,19 @@ void	ft_pf_increase_written(t_pf_controller *pf_controller)
 	pf_controller->format_i = 0;
 }
 
-void	ft_pf_move_format_ptr(t_pf_controller *pf_controller, t_strdata *strdata)
+void	ft_pf_move_format_ptr(t_pf_controller *pf_controller, \
+t_strdata *strdata)
 {
 	strdata->working_format += pf_controller->format_i;
 }
 
 /* Writes to stdout already iterated literal, moves the pointer forward
 and set the format_index to zero */
-t_status ft_write_iterated(t_pf_controller *pf_controller, t_strdata *strdata)
+t_status	ft_write_iterated(t_pf_controller \
+*pf_controller, t_strdata *strdata)
 {
-	t_status ret;
+	t_status	ret;
+
 	write(1, strdata->working_format, pf_controller->format_i);
 	ft_pf_move_format_ptr(pf_controller, strdata);
 	ft_pf_increase_written(pf_controller);
@@ -68,7 +71,7 @@ t_status ft_write_iterated(t_pf_controller *pf_controller, t_strdata *strdata)
 	return (ret);
 }
 
-t_status ft_check_character(const char c)
+t_status	ft_check_character(const char c)
 {
 	if (c == '\0')
 		return (NULLBYTE);
@@ -77,24 +80,13 @@ t_status ft_check_character(const char c)
 	return (OKAY);
 }
 
-void		ft_pf_reset_strdata(t_strdata *strdata)
-{
-	strdata->explicit_zeroprec = 0;
-	strdata->length = 0;
-	strdata->padding = NULL;
-	strdata->variable_str = NULL;
-	strdata->width = 0;
-	strdata->strlen = 0;
-	ft_pf_init_flags(&strdata->flags);
-}
-
 int	ft_printf(const char *input_format, ...)
 {
-	t_strdata strdata;
-	t_status ret;
-	t_pf_controller pf_controller;
-	ret = OKAY;
+	t_strdata		strdata;
+	t_status		ret;
+	t_pf_controller	pf_controller;
 
+	ret = OKAY;
 	va_start(strdata.list, input_format);
 	strdata.working_format = input_format;
 	ft_pf_init_pf_controller(&pf_controller);
