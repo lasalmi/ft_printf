@@ -1,5 +1,5 @@
 SOURCE_FILES = ft_printf.c \
-ft_printf_read_specifiers.c \
+ft_pf_read_specifiers.c \
 ft_pf_stages.c \
 ft_pf_handle_char.c \
 ft_pf_conv_handler.c \

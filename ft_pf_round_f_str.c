@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/09 18:36:27 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:07:08 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	ft_norounding(char *str, size_t i, int alt_form)
 		str[i] = '\0';
 }
 
-static int	ft_great_than_one(char *str, int zeroprec)
+/*static int	ft_great_than_one(char *str, int zeroprec)
 {
 	if (zeroprec)
 		return (1);
@@ -28,7 +28,7 @@ static int	ft_great_than_one(char *str, int zeroprec)
 	if (*str > '0' && *str <= '9')
 		return (1);
 	return (0);
-}
+} */
 
 static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
 {
@@ -58,13 +58,13 @@ static size_t	ft_roundup(char *str, size_t len, t_strdata *strdata)
 	return (i);
 }
 
-static int	ft_preceding_is_even(char *str)
+/* static int	ft_preceding_is_even(char *str)
 {
 	if (*--str == '.')
 		str--;
 	return (*str != '1' && *str != '3' && \
 	*str != '5' && *str != '7' && *str != '9');
-}
+} */
 
 static	void	ft_integral_extends(char **str, size_t original_size, \
 t_strdata *strdata)
