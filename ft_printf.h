@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 14:00:40 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 20:42:17 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,14 +42,14 @@ typedef enum e_ft_stage
 {
 	FT_READ_PRINT,
 	FT_READ_SPEC,
-	FT_CONVERT,
+/*	FT_CONVERT, */
 	FT_CONV_CHAR,
 	FT_CONV_STR,
 	FT_CONV_PTR,
 	FT_conv_oux,
 	FT_CONV_DI,
 	FT_CONV_FLOAT,
-	FT_PAD,
+/*	FT_PAD, */
 	FT_WRITE,
 	FT_END,
 	___UNUSED
@@ -97,6 +97,8 @@ typedef enum e_status
 	ERROR,
 	_UNUSED
 }	t_status;
+
+typedef void (*t_myfunc)(t_pf_controller*, t_strdata*);
 
 int			ft_printf(const char *input_format, ...);
 void		ft_pf_stage_to_write(t_pf_controller *pf_controller);
@@ -148,7 +150,7 @@ void		ft_pf_handle_di(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_conv_di(long long nb, int base, size_t intlen, char *str);
 void		ft_pf_uox_padding(t_strdata *strdata, \
 t_vardata vardata);
-void		ft_pf_skip_leading_zeroes(char **str);
+void		ft_pf_skip_leading_zeroes(const char **str);
 void		ft_pf_get_double_len(t_vardata *vardata, \
 long double nb, t_strdata *strdata);
 void		ft_pf_conv_f(t_vardata *vardata, \
@@ -161,4 +163,22 @@ void		ft_pf_init_pf_controller(t_pf_controller *pf_controller);
 void		ft_pf_init_strdata(t_strdata *data_to_init);
 void		ft_pf_init_flags(t_flags *flags_to_init);
 void		ft_pf_init_vardata(t_vardata *vardata);
+void		ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata);
+void		ft_write_iterated(t_pf_controller \
+*pf_controller, t_strdata *strdata);
+
+static const t_myfunc g_funcs[] = {
+	ft_read_format,
+	ft_pf_read_specifiers,
+/*	ft_conv_handler, */
+	ft_pf_handle_char,
+	ft_pf_handle_str,
+	ft_pf_handle_ptr,
+	ft_pf_oux_handler,
+	ft_pf_handle_di,
+	ft_pf_handle_f,
+/*	NULL, */
+	ft_write_iterated
+};
+
 #endif	

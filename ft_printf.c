@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 13:46:28 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 20:26:11 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*Reads through the format string, if no output, sets the stage to end*/
 
-t_status	ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata)
+void	ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata)
 {
 	int			*i;
 	t_status	ret;
@@ -28,14 +28,13 @@ t_status	ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata)
 		if (ret == NULLBYTE || ret == PERCENT)
 		{
 			ft_pf_set_stage_to(pf_controller, FT_WRITE);
-			return (ret);
+			return ;
 		}
 	}
 	if (ret == NULLBYTE)
 		ft_pf_set_stage_to(pf_controller, FT_END);
 	else
 		ft_pf_set_stage_to(pf_controller, FT_READ_SPEC);
-	return (ret);
 }
 
 /* Moves pointer forward and adds format_i to chars written and 
@@ -48,7 +47,7 @@ t_strdata *strdata)
 	pf_controller->format_i = 0;
 }
 
-t_status	ft_write_iterated(t_pf_controller \
+void	ft_write_iterated(t_pf_controller \
 *pf_controller, t_strdata *strdata)
 {
 	t_status	ret;
@@ -62,7 +61,6 @@ t_status	ft_write_iterated(t_pf_controller \
 		ft_pf_set_stage_to(pf_controller, FT_END);
 	else
 		ft_pf_set_stage_to(pf_controller, FT_READ_SPEC);
-	return (ret);
 }
 
 t_status	ft_check_character(const char c)
@@ -87,14 +85,15 @@ int	ft_printf(const char *input_format, ...)
 	ft_pf_init_strdata(&strdata);
 	while (pf_controller.stage != FT_END && pf_controller.stage != -1)
 	{
-		if (pf_controller.stage == FT_READ_PRINT)
+		g_funcs[pf_controller.stage](&pf_controller, &strdata);
+		/*if (pf_controller.stage == FT_READ_PRINT)
 			ft_read_format(&pf_controller, &strdata);
 		if (pf_controller.stage == FT_WRITE)
 			ft_write_iterated(&pf_controller, &strdata);
 		if (pf_controller.stage == FT_CONVERT)
 			ft_conv_handler(&pf_controller, &strdata);
 		if (pf_controller.stage == FT_READ_SPEC)
-			ft_pf_read_specifiers(&pf_controller, &strdata);
+			ft_pf_read_specifiers(&pf_controller, &strdata); */
 	}
 	va_end(strdata.list);
 	return (pf_controller.chars_written);
