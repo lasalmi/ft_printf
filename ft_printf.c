@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 13:24:33 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/20 13:28:52 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,18 @@ t_status	ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata)
 }
 
 /* Adds format_i to chars written and changes format_i to zero */
-void	ft_pf_increase_written(t_pf_controller *pf_controller)
+void	ft_pf_increase_written(t_pf_controller *pf_controller, t_strdata *strdata)
 {
+	strdata->working_format += pf_controller->format_i;
 	pf_controller->chars_written += pf_controller->format_i;
 	pf_controller->format_i = 0;
 }
 
-void	ft_pf_move_format_ptr(t_pf_controller *pf_controller, \
+/*void	ft_pf_move_format_ptr(t_pf_controller *pf_controller, \
 t_strdata *strdata)
 {
 	strdata->working_format += pf_controller->format_i;
-}
+} */
 
 /* Writes to stdout already iterated literal, moves the pointer forward
 and set the format_index to zero */
@@ -59,8 +60,8 @@ t_status	ft_write_iterated(t_pf_controller \
 	t_status	ret;
 
 	write(1, strdata->working_format, pf_controller->format_i);
-	ft_pf_move_format_ptr(pf_controller, strdata);
-	ft_pf_increase_written(pf_controller);
+/*	ft_pf_move_format_ptr(pf_controller, strdata); */
+	ft_pf_increase_written(pf_controller, strdata);
 	ret = ft_check_character(strdata->working_format[0]);
 	if (ret == OKAY)
 		exit(1);
