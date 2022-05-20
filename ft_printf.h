@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 20:42:17 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/21 00:17:27 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,12 @@
 # include <stdio.h>
 # include <string.h>
 # include "libft/libft.h"
+
+typedef enum e_caller {
+	FT_PRINTF,
+	FT_DPRINTF,
+	FT_SPRINTF
+} t_pf_caller;
 
 typedef enum e_length
 {
@@ -66,6 +72,7 @@ typedef struct s_vardata
 
 typedef struct s_strdata
 {
+	t_pf_caller	caller;
 	t_flags		flags;
 	int			width;
 	int			precision;
@@ -76,15 +83,18 @@ typedef struct s_strdata
 	char		*padding;
 	int			padlen;
 	const char	*working_format;
+	int			fd;
 	va_list		list;
 }	t_strdata;
 
 typedef struct s_pf_controller
 {
-	t_stage	stage;
-	int		chars_written;
-	int		format_i;
-	char	*to_print;
+	t_stage		stage;
+	int			chars_written;
+	int			format_i;
+	t_pf_caller	caller;
+	int			fd;
+	char		*to_print;
 }	t_pf_controller;
 
 typedef enum e_status
@@ -166,6 +176,7 @@ void		ft_pf_init_vardata(t_vardata *vardata);
 void		ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_write_iterated(t_pf_controller \
 *pf_controller, t_strdata *strdata);
+int			ft_dprintf(int fd, const char *input_format, ...);
 
 static const t_myfunc g_funcs[] = {
 	ft_read_format,

@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:05:12 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 13:19:37 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/21 00:13:30 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,13 @@ static void	ft_pf_print_padding(t_pf_controller *pf_controller, \
 t_strdata *strdata)
 {
 	int	ret;
+	int	fd;
 
+	fd = pf_controller->fd;
 	ret = 0;
 	if (!strdata->padding || pf_controller->stage == FT_END)
 		return ;
-	ret = write(1, strdata->padding, strdata->padlen);
+	ret = write(fd, strdata->padding, strdata->padlen);
 	if (ret < 0 && ft_output_error(pf_controller, strdata))
 		return ;
 	pf_controller->chars_written += strdata->padlen;
@@ -44,11 +46,13 @@ static void	ft_pf_print_variable(t_pf_controller *pf_controller, \
 t_strdata *strdata)
 {
 	int	ret;
+	int	fd;
 
+	fd = pf_controller->fd;
 	ret = 0;
 	if (!strdata->variable_str || pf_controller->stage == FT_END)
 		return ;
-	ret = write(1, strdata->variable_str, strdata->strlen);
+	ret = write(fd, strdata->variable_str, strdata->strlen);
 	if (ret < 0 && ft_output_error(pf_controller, strdata))
 		return ;
 	pf_controller->chars_written += strdata->strlen;
