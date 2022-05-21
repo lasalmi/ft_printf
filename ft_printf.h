@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/21 00:17:27 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/21 10:29:35 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ typedef struct s_pf_controller
 	int			format_i;
 	t_pf_caller	caller;
 	int			fd;
-	char		*to_print;
+	char		**to_print;
 }	t_pf_controller;
 
 typedef enum e_status

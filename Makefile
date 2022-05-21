@@ -26,6 +26,7 @@ ft_pf_round_f_str.c \
 ft_pf_get_double_len.c \
 ft_pf_need_to_roundup.c \
 ft_pf_initializers.c \
+ft_pf_freeall.c \
 ft_dprintf.c
 LIB_FILES = ft_strdup.c \
 ft_strlen.c \
