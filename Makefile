@@ -27,7 +27,9 @@ ft_pf_get_double_len.c \
 ft_pf_need_to_roundup.c \
 ft_pf_initializers.c \
 ft_pf_freeall.c \
-ft_dprintf.c
+ft_dprintf.c \
+ft_sprintf.c \
+ft_pf_writers.c
 LIB_FILES = ft_strdup.c \
 ft_strlen.c \
 ft_isdigit.c \
@@ -35,7 +37,8 @@ ft_strlcpy.c \
 ft_toupper.c \
 ft_strnequ.c \
 ft_strncmp.c \
-ft_uintlen.c
+ft_uintlen.c \
+ft_memcpy.c
 SOURCE_DIR = ./
 LIB_DIR = ./libft/
 SOURCES := $(addprefix $(SOURCE_DIR),$(SOURCE_FILES))

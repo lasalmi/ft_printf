@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/21 10:29:35 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/21 12:43:28 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,7 @@ typedef struct s_pf_controller
 	t_pf_caller	caller;
 	int			fd;
 	char		**to_print;
+	char		*temp_print;
 }	t_pf_controller;
 
 typedef enum e_status
@@ -177,6 +178,9 @@ void		ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_write_iterated(t_pf_controller \
 *pf_controller, t_strdata *strdata);
 int			ft_dprintf(int fd, const char *input_format, ...);
+int			ft_pf_writer(t_pf_controller *pf_controller, char *to_print, size_t len);
+int			ft_output_error(t_pf_controller *pf_controller, t_strdata *strdata);
+int			ft_sprintf(char	*str, const char *input_format, ...);
 
 static const t_myfunc g_funcs[] = {
 	ft_read_format,
