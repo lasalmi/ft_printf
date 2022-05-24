@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/24 14:12:39 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/24 15:15:38 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <stdio.h>
 # include <string.h>
 # include "libft/libft.h"
 
@@ -96,6 +95,7 @@ typedef struct s_pf_controller
 	int			fd;
 	char		**to_print;
 	char		*temp_print;
+	size_t		size;
 }	t_pf_controller;
 
 typedef enum e_status

@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:48:08 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/24 15:36:44 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ void	ft_pf_init_strdata(t_strdata *data_to_init)
 	data_to_init->width = 0;
 	data_to_init->precision = 0;
 	data_to_init->explicit_zeroprec = 0;
+	data_to_init->strlen = 0;
+	data_to_init->padlen = 0;
 	data_to_init->variable_str = NULL;
 	data_to_init->padding = NULL;
 }
