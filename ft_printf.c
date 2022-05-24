@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/21 12:33:47 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/24 13:51:46 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,17 +92,7 @@ int	ft_printf(const char *input_format, ...)
 	pf_controller.caller = FT_PRINTF;
 	pf_controller.fd = 1;
 	while (pf_controller.stage != FT_END && pf_controller.stage != -1)
-	{
 		g_funcs[pf_controller.stage](&pf_controller, &strdata);
-		/*if (pf_controller.stage == FT_READ_PRINT)
-			ft_read_format(&pf_controller, &strdata);
-		if (pf_controller.stage == FT_WRITE)
-			ft_write_iterated(&pf_controller, &strdata);
-		if (pf_controller.stage == FT_CONVERT)
-			ft_conv_handler(&pf_controller, &strdata);
-		if (pf_controller.stage == FT_READ_SPEC)
-			ft_pf_read_specifiers(&pf_controller, &strdata); */
-	}
 	va_end(strdata.list);
 	return (pf_controller.chars_written);
 }

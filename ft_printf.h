@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/21 12:43:28 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/24 14:12:39 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,14 +185,12 @@ int			ft_sprintf(char	*str, const char *input_format, ...);
 static const t_myfunc g_funcs[] = {
 	ft_read_format,
 	ft_pf_read_specifiers,
-/*	ft_conv_handler, */
 	ft_pf_handle_char,
 	ft_pf_handle_str,
 	ft_pf_handle_ptr,
 	ft_pf_oux_handler,
 	ft_pf_handle_di,
 	ft_pf_handle_f,
-/*	NULL, */
 	ft_write_iterated
 };
 
