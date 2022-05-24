@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 12:17:37 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/24 15:47:48 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/24 16:43:42 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,10 @@ static int	ft_write_sprintf(t_pf_controller *pf_controller, char *to_print, size
 		ft_memcpy(pf_controller->temp_print, to_print, len);
 	else
 	{
-		len = pf_controller->size - pf_controller->chars_written - 1;
+		if (pf_controller->chars_written >= pf_controller->size - 1)
+			len = 0;
+		else
+			len = pf_controller->size - pf_controller->chars_written - 1;
 		ft_memcpy(pf_controller->temp_print, to_print, len);
 	}
 	pf_controller->temp_print += len;

@@ -29,6 +29,7 @@ ft_pf_initializers.c \
 ft_pf_freeall.c \
 ft_dprintf.c \
 ft_sprintf.c \
+ft_snprintf.c \
 ft_pf_writers.c
 LIB_FILES = ft_strdup.c \
 ft_strlen.c \
