@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/24 16:36:48 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 14:34:21 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -182,6 +182,7 @@ int			ft_pf_writer(t_pf_controller *pf_controller, char *to_print, size_t len);
 int			ft_output_error(t_pf_controller *pf_controller, t_strdata *strdata);
 int			ft_sprintf(char	*str, const char *input_format, ...);
 int			ft_snprintf(char *str, size_t size, const char *input_format, ...);
+void		ft_pf_mallocfail(t_pf_controller *pf_controller, t_strdata *strdata);
 
 static const t_myfunc g_funcs[] = {
 	ft_read_format,
