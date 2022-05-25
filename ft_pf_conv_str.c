@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:05:32 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 16:41:25 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 18:50:32 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ t_strdata *strdata, char *str)
 
 	ret = OKAY;
 	if (!str)
-		str = null_str;
+		str = (char *)null_str;
 	strlen = ft_strlen(str);
 	if ((!strdata->precision && !strdata->explicit_zeroprec) \
 	|| strlen < strdata->precision)

@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:03:15 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/19 12:14:24 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 18:34:33 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ void	ft_pf_handle_di(t_pf_controller *pf_controller, t_strdata *strdata)
 	strdata->variable_str = (char *)malloc(vardata.conv_len + 1);
 	strdata->strlen = vardata.conv_len;
 	if (!strdata->variable_str)
-		exit(1);
+		ft_pf_mallocfail(strdata);
 	ptr = strdata->variable_str;
 	ft_pf_di_prefix(&ptr, strdata, var);
 	if (vardata.zero_prec > 0)

@@ -33,7 +33,7 @@ void	ft_pf_uox_padding(t_strdata *strdata, t_vardata vardata)
 	strdata->padlen = vardata.padlen;
 	ret = ft_pf_pad_with(strdata, ' ');
 	if (ret != OKAY)
-		exit(1);
+		ft_pf_mallocfail(strdata);
 }
 
 static unsigned long long	ft_pf_fetch_oux_var(t_strdata *strdata)
@@ -71,7 +71,7 @@ void	ft_pf_oux_handler(t_pf_controller *pf_controller, t_strdata *strdata)
 	strdata->variable_str = (char *)malloc(vardata.conv_len + 1);
 	strdata->strlen = vardata.conv_len;
 	if (!strdata->variable_str)
-		exit(1);
+		ft_pf_mallocfail(strdata);
 	ptr = strdata->variable_str;
 	if (strdata->flags.alt_form)
 		ft_pf_add_0x(&ptr, var, strdata);

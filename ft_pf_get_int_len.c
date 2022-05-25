@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 01:05:29 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/04/27 16:11:06 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 18:44:21 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void	ft_pf_get_sint_len(t_vardata *vardata, long long nb, t_strdata *strdata)
 	vardata->zero_prec = 0;
 	vardata->conv_len = 0;
 	vardata->padlen = 0;
-	if (working_nb == -9223372036854775808)
+	if (working_nb == -9223372036854775808ULL)
 		working_nb += 1;
 	if (working_nb == 0 && !strdata->explicit_zeroprec)
 		vardata->conv_len += 1;

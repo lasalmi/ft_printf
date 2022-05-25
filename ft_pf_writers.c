@@ -6,14 +6,14 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 12:17:37 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 16:26:44 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 18:49:54 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
 static int	ft_write_sprintf(t_pf_controller *pf_controller, \
-char *to_print, size_t len)
+const char *to_print, size_t len)
 {
 	if (len + pf_controller->chars_written + 1 < pf_controller->size)
 		ft_memcpy(pf_controller->temp_print, to_print, len);
@@ -29,7 +29,7 @@ char *to_print, size_t len)
 	return (1);
 }
 
-int	ft_pf_writer(t_pf_controller *pf_controller, char *to_print, size_t len)
+int	ft_pf_writer(t_pf_controller *pf_controller, const char *to_print, size_t len)
 {
 	t_pf_caller	caller;
 	int			ret;
