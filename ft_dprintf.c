@@ -6,11 +6,12 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 00:16:20 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/21 00:34:26 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:25:40 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
 int	ft_dprintf(int fd, const char *input_format, ...)
 {
 	t_strdata		strdata;

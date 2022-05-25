@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:27:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/24 13:51:46 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:27:08 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ void	ft_write_iterated(t_pf_controller \
 	int			fd;
 
 	fd = pf_controller->fd;
-//	write(fd, strdata->working_format, pf_controller->format_i);
-	wret = ft_pf_writer(pf_controller, strdata->working_format, pf_controller->format_i);
+	wret = ft_pf_writer(pf_controller, strdata->working_format \
+	, pf_controller->format_i);
 	if (wret < 0 && ft_output_error(pf_controller, strdata))
 		return ;
 	ft_pf_increase_written(pf_controller, strdata);

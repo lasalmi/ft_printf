@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 14:34:21 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:33:05 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ typedef enum e_caller {
 	FT_PRINTF,
 	FT_DPRINTF,
 	FT_SPRINTF
-} t_pf_caller;
+}	t_pf_caller;
 
 typedef enum e_length
 {
@@ -47,14 +47,12 @@ typedef enum e_ft_stage
 {
 	FT_READ_PRINT,
 	FT_READ_SPEC,
-/*	FT_CONVERT, */
 	FT_CONV_CHAR,
 	FT_CONV_STR,
 	FT_CONV_PTR,
 	FT_conv_oux,
 	FT_CONV_DI,
 	FT_CONV_FLOAT,
-/*	FT_PAD, */
 	FT_WRITE,
 	FT_END,
 	___UNUSED
@@ -109,7 +107,18 @@ typedef enum e_status
 	_UNUSED
 }	t_status;
 
-typedef void (*t_myfunc)(t_pf_controller*, t_strdata*);
+static const t_myfunc	g_funcs[] = {
+	ft_read_format,
+	ft_pf_read_specifiers,
+	ft_pf_handle_char,
+	ft_pf_handle_str,
+	ft_pf_handle_ptr,
+	ft_pf_oux_handler,
+	ft_pf_handle_di,
+	ft_pf_handle_f,
+	ft_write_iterated
+};
+typedef void			(*t_myfunc)(t_pf_controller*, t_strdata*);
 
 int			ft_printf(const char *input_format, ...);
 void		ft_pf_stage_to_write(t_pf_controller *pf_controller);
@@ -178,22 +187,12 @@ void		ft_read_format(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_write_iterated(t_pf_controller \
 *pf_controller, t_strdata *strdata);
 int			ft_dprintf(int fd, const char *input_format, ...);
-int			ft_pf_writer(t_pf_controller *pf_controller, char *to_print, size_t len);
+int			ft_pf_writer(t_pf_controller *pf_controller, \
+char *to_print, size_t len);
 int			ft_output_error(t_pf_controller *pf_controller, t_strdata *strdata);
 int			ft_sprintf(char	*str, const char *input_format, ...);
 int			ft_snprintf(char *str, size_t size, const char *input_format, ...);
-void		ft_pf_mallocfail(t_pf_controller *pf_controller, t_strdata *strdata);
-
-static const t_myfunc g_funcs[] = {
-	ft_read_format,
-	ft_pf_read_specifiers,
-	ft_pf_handle_char,
-	ft_pf_handle_str,
-	ft_pf_handle_ptr,
-	ft_pf_oux_handler,
-	ft_pf_handle_di,
-	ft_pf_handle_f,
-	ft_write_iterated
-};
+void		ft_pf_mallocfail(t_pf_controller *pf_controller, \
+t_strdata *strdata);
 
 #endif	

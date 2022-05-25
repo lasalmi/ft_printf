@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 17:26:51 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 20:35:52 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:26:06 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,5 +94,4 @@ t_strdata *strdata)
 	ft_readprecision(strdata);
 	ft_pf_read_length(strdata);
 	pf_controller->stage = ft_pf_read_conv(strdata);
-//	pf_controller->stage = FT_CONVERT;
 }

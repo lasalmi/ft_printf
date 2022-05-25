@@ -6,12 +6,12 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 12:05:12 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/21 12:34:14 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:24:55 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
-
+/* Helper function to handle write error */
 int	ft_output_error(t_pf_controller *pf_controller, t_strdata *strdata)
 {
 	pf_controller->chars_written = -1;
@@ -33,7 +33,6 @@ t_strdata *strdata)
 	ret = 0;
 	if (!strdata->padding || pf_controller->stage == FT_END)
 		return ;
-//	ret = write(fd, strdata->padding, strdata->padlen);
 	ret = ft_pf_writer(pf_controller, strdata->padding, strdata->padlen);
 	if (ret < 0 && ft_output_error(pf_controller, strdata))
 		return ;
@@ -53,7 +52,6 @@ t_strdata *strdata)
 	ret = 0;
 	if (!strdata->variable_str || pf_controller->stage == FT_END)
 		return ;
-//	ret = write(fd, strdata->variable_str, strdata->strlen);
 	ret = ft_pf_writer(pf_controller, strdata->variable_str, strdata->strlen);
 	if (ret < 0 && ft_output_error(pf_controller, strdata))
 		return ;
