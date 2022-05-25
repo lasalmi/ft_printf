@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/06 15:07:01 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 19:47:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 19:54:55 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,8 @@ static long double	ft_pf_fetch_f_var(t_strdata *strdata)
 	len = strdata->flags.length;
 	if (len == PF_LONGD)
 		return ((long double)va_arg(strdata->list, long double));
-	return ((long double)va_arg(strdata->list, double));
+	else
+		return ((long double)va_arg(strdata->list, double));
 }
 
 void	ft_pf_handle_f(t_pf_controller *pf_controller, t_strdata *strdata)
