@@ -9,7 +9,7 @@ ft_pf_read_conversion.c \
 ft_pf_print.c \
 ft_pf_conv_str.c \
 ft_pf_handle_str.c \
-ft_pf_convert_base.c \
+ft_pf_convert_hexa.c \
 ft_pf_handle_ptr.c \
 ft_pf_handle_oux.c \
 ft_pf_conv_oux.c \

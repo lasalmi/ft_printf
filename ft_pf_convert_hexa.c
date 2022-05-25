@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:42:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 18:31:13 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,8 @@ static t_status	ft_pf_check_precision(t_strdata *strdata, char *buf)
 	if (strdata->flags.pad_with_zeroes == 1)
 		added_zeroes += ft_pf_count_zeropad(strdata, added_zeroes);
 	ret = ft_pf_generate_hexastr(strdata, added_zeroes, buf);
+	if (ret == MALLOCFAIL)
+		ft_pf_mallocfail(strdata);
 	return (ret);
 }
 
