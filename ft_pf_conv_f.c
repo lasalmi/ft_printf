@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/19 12:12:19 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:38:59 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ long double nb, char *str)
 		return ;
 	temp = (char *)malloc((size_t)(vardata->intlen + strdata->precision + 5));
 	if (!temp)
-		exit(1);
+		ft_pf_mallocfail(strdata);
 	if (nb < 0)
 		nb *= -1;
 	i = ft_get_integral(nb, temp);

@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:15:21 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:45:29 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	ft_pf_handle_str(t_pf_controller *pf_controller, t_strdata *strdata)
 
 	ft_pf_validate_str_flags(strdata);
 	ret = ft_pf_conv_str(pf_controller, strdata, va_arg(strdata->list, void *));
-	if (ret != OKAY)
-		exit(1);
+	if (ret == MALLOCFAIL)
+		ft_pf_mallocfail(strdata);
 	ret = ft_pf_handle_str_width(strdata);
-	if (ret != OKAY)
-		exit(1);
+	if (ret == MALLOCFAIL)
+		ft_pf_mallocfail(strdata);
 	ft_pf_print(pf_controller, strdata);
 }

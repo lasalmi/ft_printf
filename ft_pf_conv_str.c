@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:05:32 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:41:25 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static void	ft_pf_str_precision(t_strdata *strdata, char *str)
 	strlen = strdata->precision;
 	i = 0;
 	strdata->variable_str = (char *)malloc(strlen + 1);
+	if (!strdata->variable_str)
+		ft_pf_mallocfail(strdata);
 	while (i < strdata->precision)
 	{
 		strdata->variable_str[i] = str[i];

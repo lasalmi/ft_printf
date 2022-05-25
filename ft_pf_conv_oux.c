@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "ft_printf.h"
 
 void	ft_conv_oux(unsigned long long nb, int base, size_t intlen, char *str)
 {
