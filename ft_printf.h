@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 16:33:05 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:38:08 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,6 @@ char *to_print, size_t len);
 int			ft_output_error(t_pf_controller *pf_controller, t_strdata *strdata);
 int			ft_sprintf(char	*str, const char *input_format, ...);
 int			ft_snprintf(char *str, size_t size, const char *input_format, ...);
-void		ft_pf_mallocfail(t_pf_controller *pf_controller, \
-t_strdata *strdata);
+void		ft_pf_mallocfail(t_strdata *strdata);
 
 #endif	

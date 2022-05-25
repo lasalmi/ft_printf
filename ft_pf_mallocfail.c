@@ -6,13 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/25 14:30:22 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 14:32:17 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 16:38:13 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	ft_pf_mallocfail(t_pf_controller *pf_controller, t_strdata *strdata)
+void	ft_pf_mallocfail(t_strdata *strdata)
 {
 	free(strdata->variable_str);
 	strdata->variable_str = NULL;
