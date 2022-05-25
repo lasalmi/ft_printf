@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 11:26:07 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 18:21:46 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ void	ft_pf_handle_char(t_pf_controller *pf_controller, t_strdata *strdata)
 	ret = ft_pf_conv_char(pf_controller, strdata, va_arg(strdata->list, int));
 	else
 	ret = ft_pf_conv_char(pf_controller, strdata, strdata->working_format[-1]);
-	if (ret != OKAY)
-		exit(1);
+	if (ret == MALLOCFAIL)
+		ft_pf_mallocfail(strdata);
 	ret = ft_pf_handle_char_width(strdata);
-	if (ret != OKAY)
-		exit(1);
+	if (ret == MALLOCFAIL)
+		ft_pf_mallocfail(strdata);
 	ft_pf_print(pf_controller, strdata);
 }

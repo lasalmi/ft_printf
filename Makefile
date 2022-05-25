@@ -11,7 +11,7 @@ ft_pf_conv_str.c \
 ft_pf_handle_str.c \
 ft_pf_convert_base.c \
 ft_pf_handle_ptr.c \
-ft_pf_oux_handler.c \
+ft_pf_handle_oux.c \
 ft_pf_conv_oux.c \
 ft_pf_get_uint_len.c \
 ft_pf_get_int_len.c \
@@ -27,6 +27,7 @@ ft_pf_get_double_len.c \
 ft_pf_need_to_roundup.c \
 ft_pf_initializers.c \
 ft_pf_freeall.c \
+ft_pf_mallocfail.c \
 ft_dprintf.c \
 ft_sprintf.c \
 ft_snprintf.c \

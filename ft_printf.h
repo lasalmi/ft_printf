@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 16:38:08 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/25 18:19:31 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,17 +107,7 @@ typedef enum e_status
 	_UNUSED
 }	t_status;
 
-static const t_myfunc	g_funcs[] = {
-	ft_read_format,
-	ft_pf_read_specifiers,
-	ft_pf_handle_char,
-	ft_pf_handle_str,
-	ft_pf_handle_ptr,
-	ft_pf_oux_handler,
-	ft_pf_handle_di,
-	ft_pf_handle_f,
-	ft_write_iterated
-};
+
 typedef void			(*t_myfunc)(t_pf_controller*, t_strdata*);
 
 int			ft_printf(const char *input_format, ...);
@@ -194,4 +184,15 @@ int			ft_sprintf(char	*str, const char *input_format, ...);
 int			ft_snprintf(char *str, size_t size, const char *input_format, ...);
 void		ft_pf_mallocfail(t_strdata *strdata);
 
+static const t_myfunc	g_funcs[] = {
+	ft_read_format,
+	ft_pf_read_specifiers,
+	ft_pf_handle_char,
+	ft_pf_handle_str,
+	ft_pf_handle_ptr,
+	ft_pf_oux_handler,
+	ft_pf_handle_di,
+	ft_pf_handle_f,
+	ft_write_iterated
+};
 #endif	
