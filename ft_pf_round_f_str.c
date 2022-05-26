@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/20 14:00:40 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/26 12:06:29 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i, double nb)
 {
 	size_t	rounding_i;
 
-	if (!ft_pf_need_upround(nb, strdata->precision))
+	if (!ft_pf_need_upround(nb, strdata->precision, strdata))
 	{
 		ft_norounding(*str, i, strdata->flags.alt_form);
 		return ;
