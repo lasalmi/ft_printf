@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 12:17:37 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 18:49:54 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/26 14:52:37 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ const char *to_print, size_t len)
 	return (1);
 }
 
-int	ft_pf_writer(t_pf_controller *pf_controller, const char *to_print, size_t len)
+int	ft_pf_writer(t_pf_controller *pf_controller, \
+const char *to_print, size_t len)
 {
 	t_pf_caller	caller;
 	int			ret;

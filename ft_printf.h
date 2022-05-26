@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/26 12:12:19 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/26 14:51:52 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,6 @@ typedef enum e_status
 	_UNUSED
 }	t_status;
 
-
 typedef void			(*t_myfunc)(t_pf_controller*, t_strdata*);
 
 int			ft_printf(const char *input_format, ...);
@@ -167,8 +166,9 @@ void		ft_pf_conv_f(t_vardata *vardata, \
 t_strdata *strdata, long double nb, char *str);
 void		ft_pf_handle_f(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_pf_round_f_str(char **str, t_strdata *strdata, \
-size_t i, double nb);
-int			ft_pf_need_upround(long double d, int precision, t_strdata *strdata);
+size_t i, long double nb);
+int			ft_pf_need_upround(long double d, int precision, \
+t_strdata *strdata);
 void		ft_pf_init_pf_controller(t_pf_controller *pf_controller);
 void		ft_pf_init_strdata(t_strdata *data_to_init);
 void		ft_pf_init_flags(t_flags *flags_to_init);

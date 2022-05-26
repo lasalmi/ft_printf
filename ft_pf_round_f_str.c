@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 10:05:16 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/26 12:06:29 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/26 14:53:33 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,8 @@ t_strdata *strdata)
 	free(to_free);
 }
 
-void	ft_pf_round_f_str(char **str, t_strdata *strdata, size_t i, double nb)
+void	ft_pf_round_f_str(char **str, t_strdata *strdata, \
+size_t i, long double nb)
 {
 	size_t	rounding_i;
 

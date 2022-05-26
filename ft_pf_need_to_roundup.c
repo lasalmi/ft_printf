@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/08 15:47:00 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/26 12:12:48 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/26 14:14:05 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	ft_pf_need_upround(long double d, int precision, t_strdata *strdata)
 	long long	previous;
 	long double	remainder;
 
-	if (strdata->length != PF_LONGD)
+	if (strdata->flags.length != PF_LONGD)
 		return (ft_pf_need_upround_d(d, precision));
 	remainder = (long double)d;
 	if (!precision)
