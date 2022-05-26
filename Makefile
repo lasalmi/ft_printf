@@ -2,7 +2,6 @@ SOURCE_FILES = ft_printf.c \
 ft_pf_read_specifiers.c \
 ft_pf_stages.c \
 ft_pf_handle_char.c \
-ft_pf_conv_handler.c \
 ft_pf_conv_char.c \
 ft_pf_pad_with.c \
 ft_pf_read_conversion.c \
@@ -26,7 +25,6 @@ ft_pf_round_f_str.c \
 ft_pf_get_double_len.c \
 ft_pf_need_to_roundup.c \
 ft_pf_initializers.c \
-ft_pf_freeall.c \
 ft_pf_mallocfail.c \
 ft_dprintf.c \
 ft_sprintf.c \
