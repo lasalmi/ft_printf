@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/15 12:59:26 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 16:38:59 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:54:57 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static int	ft_infnan(long double nb, char *str)
 static	size_t	ft_get_decimal(long double nb, char *temp, \
 size_t i, t_strdata *strdata)
 {
-	int		decimal;
 	size_t	count;
 
 	count = strdata->precision + 1;

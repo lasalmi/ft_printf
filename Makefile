@@ -62,7 +62,7 @@ $(NAME) : $(OBJECTS) libft
 	ar rcs $(NAME) $(OBJECTS) $(LIBOBJECTS)
 
 $(OBJECTS) : $(SOURCES)
-	gcc -g -c $(SOURCES)
+	gcc -Wall -Wextra -Werror -c $(SOURCES)
 
 libft : $(LIB_NAME)
 	ar -xv $(LIB_DIR)$(LIB_NAME) $(LIBOBJECTS)
@@ -71,7 +71,7 @@ $(LIB_NAME) :
 	make -C libft/
 
 TEST : $(NAME) main.c
-	gcc -g -Ilibft -I. -L. main.c -lftprintf
+	gcc -Wall -Wextra -Werror -g -Ilibft -I. -L. main.c -lftprintf
 	./a.out
 
 clean : 

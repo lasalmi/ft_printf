@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 15:48:08 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/24 15:36:44 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:44:04 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,6 @@ void	ft_pf_init_pf_controller(t_pf_controller *pf_controller)
 {
 	pf_controller->stage = FT_READ_PRINT;
 	pf_controller->chars_written = 0;
-	pf_controller->to_print = NULL;
+	pf_controller->temp_print = NULL;
 	pf_controller->format_i = 0;
 }

@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/28 18:39:53 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 18:44:43 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:58:06 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_conv_di(long long nb, int zeroprec, size_t intlen, char *str)
 	if (nb < 0)
 		nb *= -1;
 	str[intlen--] = '\0';
-	if (nb == -9223372036854775808ULL)
+	if ((unsigned long long)nb == -9223372036854775808ULL)
 	{
 		nb = 922337203685477580;
 		str[intlen--] = '8';

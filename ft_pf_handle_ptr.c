@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:38:32 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 18:27:33 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:54:19 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,8 +25,7 @@ void	ft_pf_handle_ptr(t_pf_controller *pf_controller, t_strdata *strdata)
 	t_status	ret;
 
 	ft_pf_check_hexa_flags(strdata);
-	ret = ft_pf_convert_hexa(pf_controller, strdata, \
-	va_arg(strdata->list, long long));
+	ret = ft_pf_convert_hexa(strdata, va_arg(strdata->list, long long));
 	if (ret == MALLOCFAIL)
 		ft_pf_mallocfail(strdata);
 	if (strdata->strlen < strdata->width && strdata->flags.pad_with_zeroes == 0)

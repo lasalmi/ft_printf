@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/19 14:29:10 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/26 14:51:52 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:55:57 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <stdarg.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <string.h>
 # include "libft/libft.h"
 
 typedef enum e_caller {
@@ -33,6 +32,7 @@ typedef enum e_length
 	PF_LL,
 	PF_LONGD
 }	t_length;
+
 typedef struct s_flags
 {
 	int			padleft;
@@ -71,27 +71,24 @@ typedef struct s_strdata
 {
 	t_pf_caller	caller;
 	t_flags		flags;
-	int			width;
-	int			precision;
-	uint8_t		length;
+	size_t		width;
+	size_t		precision;
 	uint8_t		explicit_zeroprec;
 	char		*variable_str;
-	int			strlen;
+	size_t		strlen;
 	char		*padding;
 	int			padlen;
 	const char	*working_format;
-	int			fd;
 	va_list		list;
 }	t_strdata;
 
 typedef struct s_pf_controller
 {
 	t_stage		stage;
-	int			chars_written;
+	size_t		chars_written;
 	int			format_i;
 	t_pf_caller	caller;
 	int			fd;
-	char		**to_print;
 	char		*temp_print;
 	size_t		size;
 }	t_pf_controller;
@@ -114,10 +111,8 @@ void		ft_pf_stage_to_write(t_pf_controller *pf_controller);
 void		ft_pf_stage_to_end(t_pf_controller *pf_controller);
 void		ft_pf_stage_to_read_spec(t_pf_controller *pf_controller);
 t_status	ft_check_character(char c);
-t_status	ft_pf_conv_char(t_pf_controller *pf_controller, t_strdata *strdata, \
-	int c);
-t_status	ft_pf_conv_str(t_pf_controller *pf_controller, t_strdata *strdata, \
-	char *str);
+t_status	ft_pf_conv_char(t_strdata *strdata, int c);
+t_status	ft_pf_conv_str(t_strdata *strdata, char *str);
 t_stage		ft_pf_read_conv(t_strdata *strdata);
 void		ft_pf_print(t_pf_controller *pf_controller, t_strdata *strdata);
 void		ft_pf_handle_char(t_pf_controller *pf_controller, \
@@ -132,8 +127,7 @@ void		ft_pf_handle_str(t_pf_controller *pf_controller, \
 t_strdata *strdata);
 void		ft_pf_handle_ptr(t_pf_controller *pf_controller, \
 t_strdata *strdata);
-t_status	ft_pf_convert_hexa(t_pf_controller *pf_controller, \
-t_strdata *strdata, long long ptr);
+t_status	ft_pf_convert_hexa(t_strdata *strdata, long long ptr);
 void		ft_pf_init_strdata(t_strdata *data_to_init);
 char		*ft_strdup(const char *s1);
 size_t		ft_strlen(const char *s);

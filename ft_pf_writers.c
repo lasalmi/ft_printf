@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/21 12:17:37 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/26 14:52:37 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:56:55 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ const char *to_print, size_t len)
 	t_pf_caller	caller;
 	int			ret;
 
+	ret = 0;
 	caller = pf_controller->caller;
 	if (caller < 2)
 		ret = write(pf_controller->fd, to_print, len);

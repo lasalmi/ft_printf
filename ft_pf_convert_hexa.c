@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_pf_convert_base.c                               :+:      :+:    :+:   */
+/*   ft_pf_convert_hexa.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:42:24 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 18:31:13 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:53:49 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,7 @@ static t_status	ft_pf_check_precision(t_strdata *strdata, char *buf)
 	return (ret);
 }
 
-/* Need to solve the issue with 0x, Precision and 0 padding. */
-t_status	ft_pf_convert_hexa(t_pf_controller *pf_controller, \
-t_strdata *strdata, long long ptr)
+t_status	ft_pf_convert_hexa(t_strdata *strdata, long long ptr)
 {
 	char		buffer[50];
 	static char	table[] = "0123456789abcdef";

@@ -6,14 +6,13 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 10:46:03 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/18 15:16:15 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:49:15 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-t_status	ft_pf_conv_char(t_pf_controller *pf_controller, t_strdata *strdata, \
-int c)
+t_status	ft_pf_conv_char(t_strdata *strdata, int c)
 {
 	if (strdata->variable_str != NULL)
 		return (ERROR);

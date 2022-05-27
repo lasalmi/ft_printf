@@ -6,7 +6,7 @@
 /*   By: lasalmi <lasalmi@student.hive.fi>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/21 16:05:32 by lasalmi           #+#    #+#             */
-/*   Updated: 2022/05/25 18:50:32 by lasalmi          ###   ########.fr       */
+/*   Updated: 2022/05/27 11:52:22 by lasalmi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void	ft_pf_str_precision(t_strdata *strdata, char *str)
 {
-	int		i;
+	size_t	i;
 	size_t	strlen;
 
 	strlen = strdata->precision;
@@ -31,8 +31,7 @@ static void	ft_pf_str_precision(t_strdata *strdata, char *str)
 	strdata->strlen = strdata->precision;
 }
 
-t_status	ft_pf_conv_str(t_pf_controller *pf_controller, \
-t_strdata *strdata, char *str)
+t_status	ft_pf_conv_str(t_strdata *strdata, char *str)
 {
 	size_t				strlen;
 	t_status			ret;
