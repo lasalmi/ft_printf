@@ -46,7 +46,6 @@ LIBSOURCES := $(addprefix $(LIB_DIR),$(LIB_FILES))
 OBJECTS := $(SOURCES:.c=.o)
 LIBOBJECTS := $(LIB_FILES:.c=.o)
 LIB_NAME = libft.a
-#OBJECTS += ft_strdup.o ft_strlen.o ft_isdigit.o
 NAME = libftprintf.a
 
 CFLAGS := -I $(SOURCE_DIR) -I libft
