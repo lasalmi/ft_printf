@@ -58,16 +58,16 @@ all : $(NAME)
 
 re : fclean all
 
-$(NAME) : $(OBJECTS) libft
+$(NAME) : $(OBJECTS) $(LIBOBJECTS)
 	ar rcs $(NAME) $(OBJECTS) $(LIBOBJECTS)
 
 $(OBJECTS) : $(SOURCES)
 	gcc -Wall -Wextra -Werror -c $(SOURCES)
 
-libft : $(LIB_NAME)
+$(LIBOBJECTS) : $(LIB_DIR)$(LIB_NAME)
 	ar -xv $(LIB_DIR)$(LIB_NAME) $(LIBOBJECTS)
 
-$(LIB_NAME) :
+$(LIB_DIR)$(LIB_NAME) : $(LIBSOURCES)
 	make -C libft/
 
 TEST : $(NAME) main.c
