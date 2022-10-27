@@ -6,8 +6,8 @@ Hive Helsinki project ft_printf is a project where we need to recode the famous 
 
 When this project started I hit an analysis paralysis for the first month. I tried to solve all the problems in advance and in order to break
 the paralysis I just started coding without having a plan the project. The code became a mess, but it was a an important lesson 
-about taking your time to get to know the actual problem and devising an architecture/plan for your project, because the debugging and
-addition of new features in the future would be a struggle without. This project is also the first project where I implemented states in
+about taking your time to get to know the actual problem and devising an architecture/plan for a project, because the debugging and
+addition of new features in the future would be a struggle without one. This project is also the first project where I implemented states in
 which the function would run.
 
 ## Installation
